@@ -1,0 +1,31 @@
+<ion-header>
+    <ion-navbar>
+        <ion-buttons start>
+            <button ion-button clear (click)="dismiss()">{{ 'cancel' | translate }}</button>
+        </ion-buttons>
+
+        <ion-title>{{ 'choose_location_page_header' | translate }}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-searchbar
+            [(ngModel)]="searchQuery"
+            [showCancelButton]="true"
+            (ionInput)="updateSearch()"
+            (ionCancel)="dismiss()"
+            debounce="500"
+            cancelButtonText="{{ 'cancel' | translate }}">
+            placeholder="{{ 'search' | translate }}">
+    </ion-searchbar>
+    <ion-list>
+        <ion-item *ngIf="autocompleteLoading">
+            <ion-spinner></ion-spinner>
+        </ion-item>
+
+        <ion-item *ngFor="let location of autocompleteItems" tappable (click)="chooseItem(location)">
+            {{ location }}
+        </ion-item>
+    </ion-list>
+
+</ion-content>

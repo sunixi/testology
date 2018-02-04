@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{ 'edit_user_page_header' | translate }}</ion-title>
+        <ion-buttons end>
+            <button ion-button clear *ngIf="formReady" [disabled]="!isAvatarValid() || !form.valid || updatingUserProfile || !questionsCount" (click)="submit()">{{ 'done' | translate }}</button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="sk-user-edit-base sk-user-edit-page">
+    <!-- photos -->
+    <ion-grid *ngIf="formReady">
+        <ion-row *ngFor="let photoSections of photos; let row = index">
+            <ion-col *ngFor="let photoData of photoSections; let col = index" class="sk-photo-grid-item" (tap)="tapPhoto(row, col)" (press)="pressPhoto(row, col)" [style.background-image]="photoData.url ? 'url(' + photoData.url + ')' : 'none'">
+                <div *ngIf="!photoData.active" class="sk-photo-pending"><img src="./assets/img/ic_pending.svg" alt=""></div>
+                <div *ngIf="photoData.type == 'avatar'" class="sk-avatar-mask"></div>
+                <ion-icon *ngIf="photoData.type == 'more'" name="ios-more"></ion-icon>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <!-- questions -->
+    <form *ngIf="formReady" [formGroup]="form">
+        <ion-list class="sk-edit-fields">
+            <div class="wrap">
+                <!-- questions -->
+                <div *ngFor="let sectionData of sections">
+                    <ion-item-divider text-wrap class="sk-questions-section" *ngIf="sectionData.section" color="light">
+                        <span>{{sectionData.section}}</span>
+                    </ion-item-divider>
+                    <question *ngFor="let question of sectionData.questions" [question]="question" [form]="form"></question>
+                </div>
+            </div>
+        </ion-list>
+    </form>
+</ion-content>

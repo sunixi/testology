@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{ 'join_page_header' | translate }}</ion-title>
+        <ion-buttons end>
+            <button ion-button clear *ngIf="formReady" [disabled]="!form.valid || !isAvatarValid" (click)="submit()">{{ 'next' | translate }}</button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="sk-join-initial-page">
+    <form *ngIf="formReady" [formGroup]="form">
+        <ion-list class="sk-join-fields">
+            <div class="wrap">
+                <!-- avatar -->
+                <div class="sk-avatar-wrapper" *ngIf="!isAvatarHidden" (click)="askForImageSource()">
+                    <div class="{{ isAvatarValid || avatarUploadInProgress ? 'sk-add-avatar' : 'sk-add-avatar sk-avatar-warning' }}" *ngIf="avatarUrl" [style.background-image]="'url(' + avatarUrl + ')'">
+                        <ion-spinner *ngIf="avatarUploadInProgress"></ion-spinner>
+                    </div>
+                    <div class="{{ isAvatarValid || avatarUploadInProgress ? 'sk-add-avatar' : 'sk-add-avatar sk-avatar-warning' }}" *ngIf="!avatarUrl">
+                        <ion-icon *ngIf="!avatarUploadInProgress" name="md-add"></ion-icon>
+                        <span *ngIf="!avatarUploadInProgress">{{ 'choose_avatar' | translate }}</span>
+                        <ion-spinner *ngIf="avatarUploadInProgress"></ion-spinner>
+                    </div>
+                </div>
+                <!-- questions -->
+                <div *ngFor="let sectionData of sections">
+                    <ion-item-divider text-wrap class="sk-questions-section" *ngIf="sectionData.section" color="light">
+                        <span>{{sectionData.section}}</span>
+                    </ion-item-divider>
+                    <question *ngFor="let question of sectionData.questions" [question]="question" [form]="form"></question>
+                </div>
+            </div>
+        </ion-list>
+    </form>
+</ion-content>

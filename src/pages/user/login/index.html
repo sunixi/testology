@@ -1,0 +1,18 @@
+<ion-content class="sk-login-page {{ isGenericSiteUrl ? 'sk-login-url' : ''}} " padding>
+    <div class="wrap">
+        <img src="./assets/img/logo.svg" alt="" class="sk-logo">
+        <form [formGroup]="form">
+            <ion-list class="sk-inputs">
+                <question *ngFor="let question of questions" [question]="question" [form]="form"></question>
+                <button type="button" ion-button color="light" clear [navPush]="forgotPasswordPage" class="sk-fpass">{{ 'forgot_password' | translate }}</button>
+            </ion-list>
+            <div class="sk-buttons">
+                <button type="submit" ion-button block round [disabled]="!form.valid || loginInProcessing" class="sk-login" (click)="login()">{{ 'login' | translate }}</button>
+                <div class="sk-line"></div>
+                <button type="button" ion-button block round outline [navPush]="joinPage" class="sk-signup">{{ 'sign_up' | translate }}</button>
+                <button *ngIf="showFacebookLoginButton" ion-button block round outline class="sk-fbconnect" (click)="facebookLogin()">{{ 'facebook_connect' | translate}}</button>
+                <button type="button" ion-button block outline icon-left class="sk-site-url" [navPush]="appUrlPage" *ngIf="isGenericSiteUrl"><ion-icon name="ios-arrow-back"></ion-icon>{{ 'change_site_url' | translate }}</button>
+            </div>
+        </form>
+    </div>
+</ion-content>

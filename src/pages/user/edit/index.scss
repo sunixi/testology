@@ -1,0 +1,63 @@
+.sk-user-edit-base {
+    background-color: #F0F2F3;
+
+    ion-grid {
+        padding: 5px;
+    }
+
+    .sk-avatar-mask, .sk-photo-pending {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: calc(100% + 1px);
+        height: calc(100% + 1px);
+        img {
+            width: 12vw;
+            height: 12vw;
+        }
+    }
+
+    .sk-avatar-mask {
+        background-image: url("../assets/img/ava_mask.svg");
+        background-size: cover;
+        opacity: 0.6;
+    }
+
+    .sk-photo-grid-item {
+        position: relative;
+        overflow: hidden;
+        margin: 6px;
+        border-radius: 16px;
+        background-color: #CFD9E2;
+        touch-action: auto!important;
+        user-select: auto!important;
+        -webkit-user-drag: auto!important;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        &::after {
+            content: "";
+            display: block;
+            padding-bottom: 100%;
+        }
+
+        ion-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .icon {
+            position: absolute;
+            left: calc(50% - 1.7rem);
+            top: calc(50% - 3.4rem);
+            font-size: 6rem;
+            color: #B1BECA;
+        }
+    }
+}

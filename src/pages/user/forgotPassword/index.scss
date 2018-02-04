@@ -1,0 +1,39 @@
+.sk-forgot-pass-page {
+  background-color: #f0f4f8;
+  .sk-description {
+    padding: 10px 16px;
+    background-color: transparent;
+    p {
+      font-size: 1.6rem;
+      line-height: 1.4;
+    }
+  }
+  .sk-input-head {
+    background-color: transparent;
+    color: #8e9093;
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  .item .item-inner {
+    border: 0;
+  }
+  ion-input input {
+    margin-top: 18px;
+    margin-bottom: 18px;
+  }
+  .list .item {
+    .item-inner{
+      border-bottom: 0.55px solid #c8c7cc;
+    }
+    &:last-child .item-inner{
+      border: 0;
+    }
+  }
+  .list .item-block:last-child, .list .item-block:first-child {
+    border: 0;
+  }
+  .input-wrapper .label span{
+    font-size: 1.5rem;
+  }
+}

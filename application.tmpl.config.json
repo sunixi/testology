@@ -1,0 +1,14 @@
+{
+  "id": "com.skadate.com",
+  "version": "0.0.1",
+  "name": "Skmobile APP",
+  "description": "skadate mobile app",
+  "authorEmail": "info@skadate.com",
+  "authorName": "skadate",
+  "authorUrl": "http://skadate.com",
+  "serverUrl": "",
+  "facebookAppId": "",
+  "googleProjectNumber": "",
+  "play_store_key": "",
+  "connectionTimeout": "40000"
+}

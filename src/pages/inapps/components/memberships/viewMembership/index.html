@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{ membership.title }}</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content class="sk-memberships-inner-page">
+    <div class="sk-membership-items">
+        <div class="sk-membership-item" *ngFor="let plan of membership?.plans" (click)="buyProduct(plan.productId);">
+            <div class="sk-membership-price">
+                <span>{{ currency }} {{ plan.dto.price }}</span><span>per {{ plan.dto.period }} {{ plan.dto.periodUnits }}</span>
+            </div>
+            <span *ngIf="plan.dto.recurring == '1'">{{ 'recurring' | translate }}</span>
+            <ion-icon name="ios-arrow-forward"></ion-icon>
+        </div>
+    </div>
+    <div class="wrap" *ngFor="let section of membership?.labels">
+        <div class="sk-section">
+            <span>{{ section.label }}</span>
+        </div>
+        <ion-list>
+            <ion-item *ngFor="let action of section?.actions">{{ action }}</ion-item>
+        </ion-list>
+    </div>
+</ion-content>

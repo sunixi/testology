@@ -1,0 +1,92 @@
+.sk-app-conection-error-page {
+    .wrap {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        button {
+            width: 30vh;
+            margin: 32px 0;
+        }
+
+        .sk-text {
+            text-align: center;
+            font-size: 1.8rem;
+            color: #AFB9C1;
+        }
+
+        .sk-zero-lash {
+            -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+        }
+
+        .sk-zero-eye {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 9;
+            border: 8px solid #DCDDE1;
+            background-color: #fff;
+            width: 20vh;
+            height: 20vh;
+            border-radius: 5% 125% 5% 125%;
+            overflow: hidden;
+
+            .sk-zero-iris {
+                width: 12vh;
+                height: 12vh;
+                background-color: #2D9AFF;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                &::after{
+                    content: '';
+                    position: absolute;
+                    right: 3vh;
+                    z-index: 10;
+                    width: 3.5vh;
+                    height: 3.5vh;
+                    background-color: #fff;
+                    border: 6px solid #2D9AFF;
+                    border-radius: 50%;
+                }
+
+                .sk-zero-pupil {
+                    background-color: #097BE5;
+                    width: 7.5vh;
+                    height: 7.5vh;
+                    border-radius: 50%;
+                    position: relative;
+                    -webkit-animation: sk-eye 2.8s linear infinite;
+                    -moz-animation: sk-eye 2.8s linear infinite;
+                    animation: sk-eye 2.8s linear infinite;
+                }
+            }
+        }
+
+        @keyframes sk-eye {
+            0%{bottom: 0.6vh; right: 0vh;}
+            6.25%{bottom: 0.6vh; right: -0.3vh;}
+            12.5%{bottom: 0.6vh; right: -0.6vh;}
+            18.75%{bottom: 0.3vh; right: -0.6vh;}
+            25%{bottom: 0vh; right: -0.6vh;}
+            31.25%{bottom: -0.3vh; right: -0.6vh;}
+            37.5%{bottom: -0.6vh; right: -0.6vh;}
+            43.75%{bottom: -0.6vh; right: -0.3vh;}
+            50%{bottom: -0.6vh; right: 0vh;}
+            56.25%{bottom: -0.6vh; right: 0.3vh;}
+            62.5%{bottom: -0.6vh; right: 0.6vh;}
+            68.75%{bottom: -0.3vh; right: 0.6vh;}
+            75%{bottom: 0vh; right: 0.6vh;}
+            81.25%{bottom: 0.3vh; right: 0.6vh;}
+            87.5%{bottom: 0.6vh; right: 0.6vh;}
+            92.75%{bottom: 0.6vh; right: 0.3vh;}
+            100%{bottom: 0.6vh; right: 0vh;}
+        }
+    }
+}

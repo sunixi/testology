@@ -1,0 +1,33 @@
+<div class="sk-profile-tab sk-navigation-tab">
+    <ion-scroll scrollY="true">
+        <div class="sk-user">
+            <div class="sk-user-avatar">
+                <div class="wrap">
+                    <user-avatar (tap)="showProfile()" [useBigAvatar]="true" [url]="user.avatar?.pendingBigUrl"></user-avatar>
+                    <div *ngIf="user.avatar?.id && !user.avatar?.active" class="sk-photo-pending" (tap)="showProfile()">
+                        <img src="./assets/img/ic_pending.svg" alt="">
+                    </div>
+                    <button ion-button clear  class="edit" [navPush]="profileEditPhotosPage"></button>
+                </div>
+            </div>
+            <div class="sk-user-info">
+                <span class="sk-name">
+                    {{user.displayName}}
+                </span>
+                <span class="sk-about">
+                    {{user.aboutMe}}
+                </span>
+            </div>
+            <div class="sk-user-buttons">
+                <button ion-button outline round [navPush]="profileEditPage">{{ 'profile_edit_profile' | translate }}</button>
+                <button ion-button outline round [navPush]="appSettingsPage">{{ 'profile_app_settings' | translate }}</button>
+            </div>
+            <div class="sk-user-links">
+                <button ion-button clear [navPush]="guestsPage">{{ 'profile_my_guests' | translate }} <span class="sk-guest-count" *ngIf="getNewGuestsCount()">{{getNewGuestsCount()}}</span></button>
+                <button ion-button clear [navPush]="bookmarksPage">{{ 'profile_bookmarks' | translate }}</button>
+                <button ion-button clear [navPush]="compatibleUsersPage">{{ 'profile_compatible_users' | translate }}</button>
+                <button ion-button clear [navPush]="inappsPage">{{ 'profile_credits_and_memberships' | translate }}</button>
+            </div>
+        </div>
+    </ion-scroll>
+</div>

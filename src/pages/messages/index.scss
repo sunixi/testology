@@ -1,0 +1,331 @@
+.sk-messages-page {
+    background-color: #EFF1F3;
+    .sk-new-conversation {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        padding: 72px 20vw;
+        img {
+            height: 40vw;
+            width: 40vw;
+            border-radius: 100%;
+            object-fit: cover;
+        }
+        h4 {
+            font-size: 2rem;
+        }
+        span {
+            margin-bottom: 64px;
+            text-align: center;
+            font-size: 1.8rem;
+            color: #AFB9C1;
+        }
+    }
+
+    .sk-messages {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem 0;
+        margin-bottom: 80px;
+
+        .sk-message-wrap {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+
+            .sk-unread-message-divider {
+                display: inline-block;
+                width: 100%;
+                margin: 8px 0;
+                padding: 10px 0;
+                border-top: 1px solid #B2B2B2;
+                border-bottom: 1px solid #B2B2B2;
+                background-color: #fff;
+                color: #BABFC4;
+                text-align: center;
+                text-transform: uppercase;
+                font-size: 1.2rem;
+            }
+
+            &.sk-message-error {
+                .sk-message-sent {
+                    transform: translateX(-6vw);
+                    transition: all 0.3s ease-in;
+                }
+                .sk-message-deliver-error {
+                    opacity: 1;
+                    transition: all 0.4s ease-in;
+                }
+            }
+
+            .sk-message-deliver-error {
+                position: absolute;
+                right: 1.8vw;
+                bottom: calc(50% - 12px);
+                opacity: 0;
+                img {
+                    height: 20px;
+                    margin: 0;
+                    object-fit: contain;
+                }
+            }
+
+            .sk-message-date {
+                width: 100%;
+                text-align: center;
+                padding: 0.8rem 0 0.5rem 0;
+                font-size: 1.2rem;
+                text-transform: uppercase;
+                color: #BABFC4;
+            }
+
+            .sk-message {
+                display: flex;
+                flex-direction: column;
+                position: relative;
+                max-width: 85%;
+                margin: 4px 12px 4px;
+                padding: 10px 16px 6px;
+                border-radius: 22px;
+                color: #434649;
+                transform: translateX(0);
+                transition: all 0.3s ease-in;
+
+                p {
+                    margin: 0 0 4px;
+                    padding: 0;
+                    font-size: 1.55rem;
+                    line-height: 1.5;
+                    &.sk-message-time {
+                        margin: 0;
+                        text-align: end;
+                        line-height: 1.2;
+                        font-weight: 500;
+                        color: #fff;
+                        span {
+                            font-size: 1.2rem;
+                        }
+                    }
+                }
+
+                span {
+                    margin-top: 1rem;
+                    align-self: flex-end;
+                    font-size: 1.3rem;
+                }
+
+                button {
+                    min-height: 0;
+                    padding: 0;
+                    height: auto;
+                    margin: 0;
+                    span {
+                        margin: 1px;
+                        font-size: 1.5rem;
+                    }
+                }
+
+            }
+
+            .sk-message-received {
+                align-self: flex-start;
+                background-color: #fff;
+                p.sk-message-time {
+                    color: #000000;
+                }
+                p {
+                    color: #000 !important;
+                }
+            }
+
+            .sk-message-sent {
+                align-self: flex-end;
+                background-color: #0076FF;
+                color: #fff;
+
+                p img {
+                    width: 2rem;
+                    max-height: 13px;
+                    margin-left: 0.4rem;
+                }
+            }
+            &.sk-message-type-wink {
+                .sk-message {
+                    padding: 0;
+                    background-color: transparent;
+                    &>span {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-top:0 ;
+                        color: #000;
+                        img {
+                            margin: 0 8px;
+                        }
+                    }
+                    .sk-message-time {
+                        text-align: center;
+                    }
+                }
+                .sk-message-sent {
+                    img {
+                        width: 5.6rem;
+                        height: 5.6rem;
+                    }
+                }
+                .sk-message-received {
+                    img {
+                        width: 10rem;
+                        height: 10rem;
+                    }
+                }
+            }
+            &.sk-message-type-attachment {
+                .sk-message {
+                    padding: 18px 0 12px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    .sk-attachment-img {
+                        height: 180px;
+                        object-fit: cover;
+                        margin: 12px 0;
+                    }
+                    .sk-message-time {
+                        margin: 0 16px;
+                        text-align: left;
+                    }
+                    .sk-attachment-file {
+                        padding: 0 16px;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        a {
+                            display: inline-block;
+                            max-width: 100%;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            margin-bottom: 8px;
+                        }
+                    }
+                    &.sk-message-sent {
+                        .sk-attachment-file-overlay {
+                            background-color: #4fa0ff;
+                            background-image: url(./assets/img/ic_file.svg);
+                        }
+                        .sk-attachment-file a {
+                            color: #FFF;
+                        }
+                    }
+                    &.sk-message-received {
+                        .sk-attachment-file-overlay {
+                            background-color: #CCD0D8;
+                            background-image: url(./assets/img/ic_file_white.svg);
+                        }
+                        .sk-attachment-file a {
+                            color: #000;
+                        }
+                    }
+                    .sk-attachments-wrap {
+                        display: flex;
+                        justify-content: center;
+                        align-items: stretch;
+                    }
+                }
+            }
+            &.sk-message-type-attachment-file {
+                .sk-message {
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 10px 16px;
+                    &>div {
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        p {
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                        }
+                    }
+                    &>img {
+                        width: 28px;
+                        margin-left: 24px;
+                    }
+                    .sk-message-time {
+                        text-align: left;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.sk-messages-footer {
+    .toolbar-content {
+        display: flex;
+        align-items: center;
+    }
+
+    ion-textarea {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 0 10px;
+
+        textarea {
+            height: 32px;
+            margin: 0;
+            padding: 0.8rem 1rem;
+            border-radius: 5px;
+            background-color: #EFF1F3;
+            font-size: 1.4rem;
+            resize: none;
+        }
+    }
+
+    button {
+        border: 0;
+        background: transparent;
+        font-size: 1.7rem;
+        color: #0076FF;
+        padding: 0 1.2rem;
+        box-shadow: none;
+
+        &.activated {
+            opacity: 0.7;
+            background: transparent;
+        }
+
+        &.sk-chat-footer-attach {
+            padding: 0 1rem;
+
+            img {
+                height: 3rem;
+            }
+        }
+    }
+    &.sk-messages-footer-promoted {
+        .toolbar-background {
+            background-color: #0076FF;
+        }
+        button {
+            color: #4FA0FF;
+        }
+        .sk-chat-footer-attach {
+            opacity: 0.25;
+        }
+        ion-textarea textarea {
+            height: auto;
+            background-color: #4EA0FF;
+            &::-webkit-input-placeholder {color:#0071CC;}
+            &::-moz-placeholder          {color:#0071CC;}/* Firefox 19+ */
+            &:-moz-placeholder           {color:#0071CC;}/* Firefox 18- */
+            &:-ms-input-placeholder      {color:#0071CC;}
+        }
+    }
+}

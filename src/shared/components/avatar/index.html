@@ -1,0 +1,4 @@
+<div *ngIf="!url || !isAvatarActive" class="{{useBigAvatar ? 'sk-no-big-avatar' : 'sk-no-sm-avatar'}}">
+    <img src="{{useBigAvatar ? bigDefaultAvatar : defaultAvatar}}" />
+</div>
+<img *ngIf="url && isAvatarActive" src="{{url}}" />

@@ -1,0 +1,23 @@
+<ion-header *ngIf="isUrlConfigured">
+    <ion-navbar>
+        <ion-title>{{ 'change_site_url_page_header' | translate }}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="sk-site-url-page" padding>
+    <div class="wrap">
+        <img class="sk-success-icon" src="./assets/img/logo.svg" alt="" />
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <ion-list class="sk-inputs">
+                <ion-icon name="ios-link"></ion-icon>
+                <question *ngFor="let question of questions" [question]="question" [form]="form"></question>
+            </ion-list>
+        </form>
+
+        <div class="sk-buttons">
+            <button ion-button block round class="sk-login" *ngIf="!isUrlConfigured" [disabled]="!form.valid" (click)="onSubmit()">Next</button>
+            <button ion-button block round class="sk-login" *ngIf="isUrlConfigured"  [disabled]="!form.valid" (click)="onSubmit()">{{ 'next' | translate }}</button>
+        </div>
+    </div>
+</ion-content>

@@ -1,0 +1,198 @@
+.sk-hot-list-tab {
+    background-color: #000;
+    .sk-user-cards {
+        min-height: 100vh;
+        padding-top: 10px;
+    }
+
+    .sk-user-cards-searchmode {
+        .sk-item-card {
+            margin: 10px 8px 16px 16px;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            width: calc(50% - 24px);
+            overflow: hidden;
+            float: left!important;
+
+            &:nth-child(2n) {
+                margin: 10px 16px 16px 8px;
+            }
+
+            user-avatar {
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                height: 180px;
+                overflow: hidden;
+                touch-action: initial!important;
+                user-select: initial!important;
+                -webkit-user-drag: initial!important;
+                background: #EFF1F3;
+                border-top-left-radius: 8px;
+                border-top-right-radius: 8px;
+
+                .sk-no-big-avatar {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 180px;
+                    background: #EFF1F3;
+                    border-top-left-radius: 8px;
+                    border-top-right-radius: 8px;
+
+                    img {
+                        width: 55%;
+                        margin: 15vh 0;
+                        border-radius: 0;
+                        height: auto;
+                    }
+                }
+            }
+
+            img {
+                object-fit: cover;
+                object-position: center 15%;
+                margin: -1px -1px 0 -1px;
+                max-width: calc(100% + 2px);
+                width: calc(100% + 2px);
+                border-top-left-radius: 8px;
+                border-top-right-radius: 8px;
+                height: 100%;
+            }
+
+            .sk-card-bottom {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 1rem 1.2rem;
+                background-color: #fff;
+
+              .sk-card-info {
+                  display: flex;
+                  flex-direction: column;
+                  align-items: flex-start;
+                  flex: 1;
+
+                  .sk-name {
+                      display: flex;
+                      justify-content: flex-start;
+                      margin-bottom: 0.3rem;
+                      font-size: 1.6rem;
+
+                      span {
+                          display: inline-block;
+                          max-width: 27vw;
+                          text-align: left;
+                          overflow: hidden;
+                          text-overflow: ellipsis;
+                          white-space: nowrap;
+                      }
+
+                      b {
+                          display: inline-table;
+                          position: relative;
+                          padding-right: 2rem;
+                          font-weight: normal;
+                      }
+                  }
+
+                  .sk-comp-bar {
+                      width: 100%;
+                      background: linear-gradient(to right, #f08d31 0%, #ee0e5c 100%);
+                      display: flex;
+                      justify-content: center;
+                      align-content: center;
+                      align-items: center;
+                      flex: 1;
+                      height: 2.2rem;
+                      margin-top: 6px;
+                      border-radius: 5px;
+
+                      span {
+                          color:#fff;
+                      }
+
+                      &-mask {
+                          width: 100%;
+                          height: 100%;
+                          border-radius: 3px;
+                          display: flex;
+                          justify-content: center;
+                          align-items: center;
+                          font-size: 1.3rem;
+                      }
+                  }
+              }
+
+              .sk-card-buttons {
+                  display: inline-table;
+
+                  button {
+                      height: 12vw;
+                      width: 12vw;
+                      margin: 0 0.2rem;
+                      background-size: cover;
+                      background-color: transparent;
+                      background-repeat: no-repeat;
+                      background-position: center;
+                  }
+
+                  .sk-dislike {
+                      background-image: url("../assets/img/ic_dismatch.svg");
+                  }
+
+                  .sk-like {
+                      background-image: url("../assets/img/ic_match.svg");
+                  }
+              }
+            }
+        }
+    }
+
+    .sk-hot-list-button {
+        z-index: 100;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 48px;
+        border-radius: 100px;
+        min-width: 160px;
+        margin: 0 0 18px;
+        background: rgb(240,141,49); /* Old browsers */
+        background: -moz-linear-gradient(left, rgba(240,141,49,1) 0%, rgba(238,14,92,1) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(left, rgba(240,141,49,1) 0%,rgba(238,14,92,1) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to right, rgba(240,141,49,1) 0%,rgba(238,14,92,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f08d31', endColorstr='#ee0e5c',GradientType=1 ); /* IE6-9 */
+    }
+    .sk-nothing-found  {
+        img {
+            width: 40%;
+        }
+        span {
+            color: #fff;
+            font-size: 2.2rem;
+        }
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .sk-hot-list-tab .sk-user-cards-searchmode .sk-item-card .sk-no-big-avatar {
+        height: 160px!important;
+    }
+    .sk-hot-list-tab .sk-user-cards-searchmode .sk-item-card user-avatar {
+        height: 160px!important;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .sk-hot-list-tab .sk-user-cards-searchmode .sk-item-card .sk-no-big-avatar {
+        height: 140px!important;
+    }
+    .sk-hot-list-tab .sk-user-cards-searchmode .sk-item-card user-avatar {
+        height: 140px!important;
+    }
+    .sk-hot-list-tab .sk-user-cards-searchmode .sk-item-card .sk-card-bottom .sk-card-info .sk-name span {
+        max-width: 25vw;
+    }
+}

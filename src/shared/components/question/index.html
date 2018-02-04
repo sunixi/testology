@@ -1,0 +1,127 @@
+<div [class]="getQuestionClass">
+
+    <!-- text -->
+    <div class="{{question.stackedInput ? 'sk-stacked-text-question-presentation' : 'sk-text-question-presentation'}}" *ngIf="question.controlType == 'text'">
+        <ion-item [formGroup]="form">
+            <ion-label *ngIf="question.stackedInput" stacked>{{question.label}}</ion-label>
+            <ion-input changeFocusByEnter [type]="question.type" [placeholder]="question.label" [formControlName]="question.key" [id]="question.key"></ion-input>
+        </ion-item>
+        <div *ngIf="hasVisibleErrors" class="sk-question-error" (click)="showErrors($event)"></div>
+    </div>
+
+    <!-- select -->
+    <div class="sk-select-question-presentation" *ngIf="question.controlType == 'select'">
+        <ion-item [formGroup]="form">
+            <ion-label>{{question.label}}</ion-label>
+            <ion-select [formControlName]="question.key" [multiple]="question.multiple" [id]="question.key" cancelText="{{ 'cancel' | translate }}" okText="{{ 'ok' | translate }}">
+                <ion-option *ngIf="!question.multiple && !question.hideEmptyValue" value="">{{ 'select_input_empty_value' | translate }}</ion-option>
+                <ion-option *ngFor="let opt of question.values" [value]="opt.value">{{opt.title}}</ion-option>
+            </ion-select>
+        </ion-item>
+        <div *ngIf="hasVisibleErrors" class="sk-question-error" (click)="showErrors($event)"></div>
+    </div>
+
+    <!-- date -->
+    <div class="sk-date-question-presentation" *ngIf="question.controlType == 'date'">
+        <ion-item [formGroup]="form">
+            <ion-label>{{question.label}}</ion-label>
+            <ion-datetime [displayFormat]="question.displayFormat"
+                    monthNames="{{ 'date_input_months' | translate }}"
+                    monthShortNames="{{ 'date_input_months_short' | translate }}"
+                    dayNames="{{ 'date_input_days' | translate }}"
+                    dayShortNames="{{ 'date_input_days_short' | translate }}"
+                    [min]="question.minDate"
+                    [max]="question.maxDate"
+                    [formControlName]="question.key"
+                    [id]="question.key"
+                    placeholder="{{ 'choose_date' | translate }}"
+                    cancelText="{{ 'cancel' | translate }}"
+                    doneText="{{ 'done' | translate }}">
+            </ion-datetime>
+            <div *ngIf="hasVisibleErrors" class="sk-question-error" (click)="showErrors($event)"></div>
+        </ion-item>
+    </div>
+
+    <!-- date range -->
+    <div class="sk-date-range-question-presentation" *ngIf="question.controlType == 'date_range'" id="question.key">
+        <ion-label>{{question.label}} {{ 'from' | translate }}</ion-label>
+        <div class="sk-date-range-question-wrap">
+              <div class="wrap">
+                    <ion-item>
+                        <ion-datetime [displayFormat]="question.displayFormat"
+                            [(ngModel)]="question.value.start"
+                            monthNames="{{ 'date_input_months' | translate }}"
+                            monthShortNames="{{ 'date_input_months_short' | translate }}"
+                            dayNames="{{ 'date_input_days' | translate }}"
+                            dayShortNames="{{ 'date_input_days_short' | translate }}"
+                            [min]="question.minDate"
+                            [max]="question.maxDate"
+                            placeholder="{{ 'choose_date' | translate }}"
+                            cancelText="{{ 'cancel' | translate }}"
+                            doneText="{{ 'done' | translate }}" (ionChange)="question.update()">
+                        </ion-datetime>
+                    </ion-item>
+                    <span>{{ 'to' | translate }}</span>
+                    <ion-item>
+                        <ion-datetime [displayFormat]="question.displayFormat"
+                            [(ngModel)]="question.value.end"
+                            monthNames="{{ 'date_input_months' | translate }}"
+                            monthShortNames="{{ 'date_input_months_short' | translate }}"
+                            dayNames="{{ 'date_input_days' | translate }}"
+                            dayShortNames="{{ 'date_input_days_short' | translate }}"
+                            [min]="question.minDate"
+                            [max]="question.maxDate"
+                            placeholder="{{ 'choose_date' | translate }}"
+                            cancelText="{{ 'cancel' | translate }}"
+                            doneText="{{ 'done' | translate }}" (ionChange)="question.update()">
+                        </ion-datetime>
+                    </ion-item>
+              </div>
+        </div>
+        <div *ngIf="hasVisibleErrors" class="sk-question-error" (click)="showErrors($event)"></div>
+    </div>
+
+    <!-- googlemap location -->
+    <div class="sk-googlemap-location-question-presentation" *ngIf="question.controlType == 'googlemap_location'" (click)="question.showAddressModal()">
+        <ion-item>
+            <ion-label stacked>{{question.label}}</ion-label>
+            <ion-input readonly="true" [id]="question.key" type="text" placeholder="{{ 'choose_location_input' | translate }}" value="{{question.value}}"></ion-input>
+        </ion-item>
+        <div *ngIf="hasVisibleErrors" class="sk-question-error" (click)="showErrors($event)"></div>
+    </div>
+
+    <!-- extended googlemap location -->
+    <div class="sk-extended-googlemap-location-question-presentation" id="question.key" *ngIf="question.controlType == 'extended_googlemap_location'" (click)="question.showAddressModal()">
+        <ion-item>
+            <ion-label stacked><span>{{question.label}}</span> <span>{{question.value.distance}} {{ question.unit | translate }} {{ 'from' | translate }}</span></ion-label>
+            <ion-range min="{{question.min}}" max="{{question.max}}" step="{{question.step}}" [(ngModel)]="question.value.distance"></ion-range>
+            <ion-input readonly="true" type="text" placeholder="{{ 'choose_location_input' | translate }}" value="{{question.value.location}}"></ion-input>
+        </ion-item>
+        <div *ngIf="hasVisibleErrors" class="sk-question-error" (click)="showErrors($event)"></div>
+    </div>
+
+    <!-- range -->
+    <div class="sk-range-question-presentation" *ngIf="question.controlType == 'range'">
+        <ion-item [formGroup]="form">
+            <ion-label stacked><span>{{question.label}}</span><span>{{question.value.lower}}-{{question.value.upper}}</span></ion-label>
+            <ion-range (ionChange)="question.onChangeRange()" [formControlName]="question.key" [id]="question.key" dualKnobs="true" min="{{question.min}}" max="{{question.max}}"></ion-range>
+        </ion-item>
+    </div>
+
+    <!-- textarea -->
+    <div class="sk-textarea-question-presentation" *ngIf="question.controlType == 'textarea'">
+        <ion-item [formGroup]="form">
+            <ion-label stacked>{{question.label}}</ion-label>
+            <ion-textarea rows="1" autosize [spellcheck]=false [type]="question.type" [placeholder]="question.label" [formControlName]="question.key" [id]="question.key"></ion-textarea>
+        </ion-item>
+        <div *ngIf="hasVisibleErrors" class="sk-question-error" (click)="showErrors($event)"></div>
+    </div>
+
+    <!-- checkbox -->
+    <div class="sk-checkbox-question-presentation" *ngIf="question.controlType == 'checkbox'">
+        <ion-item [formGroup]="form">
+            <ion-label>{{question.label}}</ion-label>
+            <ion-toggle [formControlName]="question.key" [id]="question.key"></ion-toggle>
+        </ion-item>
+    </div>
+</div>

@@ -1,0 +1,90 @@
+.header .sk-dashboard-toolbar {
+    align-items: flex-start;
+    padding: 0;
+}
+
+.sk-dashboard-page {
+    &.content-ios {
+        .sk-components-slider-wrapper {
+            .sk-navigation-tab {
+                height: calc(100vh - 56px);
+            }
+        }
+    }
+    .sk-components-slider-wrapper {
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+
+        .sk-navigation-tab {
+            height: calc(100vh - 44px);
+            overflow: hidden;
+
+            ion-scroll {
+                position: initial;
+            }
+        }
+
+        .sk-search-tab,
+        .sk-conversations-tab {
+            .scroll-content {
+                margin-top: 60px;
+            }
+        }
+    }
+    .sk-main-preloader {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 94vh;
+        margin-top: -54px;
+        -webkit-animation: sk-preloader 1.2s linear infinite;
+        -moz-animation: sk-preloader 1.2s linear infinite;
+        animation: sk-preloader 1.2s linear infinite;
+    }
+}
+
+
+@-webkit-keyframes sk-preloader {
+    0%{transform: scale(1);}
+    10%{transform: scale(1.05);}
+    20%{transform: scale(1.1);}
+    30%{transform: scale(1.15);}
+    40%{transform: scale(1.2);}
+    50%{transform: scale(1.25);}
+    60%{transform: scale(1.2);}
+    70%{transform: scale(1.15);}
+    80%{transform: scale(1.1);}
+    90%{transform: scale(1.05);}
+    100%{transform: scale(1);}
+}
+
+@-moz-keyframes sk-preloader {
+    0%{transform: scale(1);}
+    10%{transform: scale(1.05);}
+    20%{transform: scale(1.1);}
+    30%{transform: scale(1.15);}
+    40%{transform: scale(1.2);}
+    50%{transform: scale(1.25);}
+    60%{transform: scale(1.2);}
+    70%{transform: scale(1.15);}
+    80%{transform: scale(1.1);}
+    90%{transform: scale(1.05);}
+    100%{transform: scale(1);}
+}
+
+@keyframes sk-preloader {
+    0%{transform: scale(1);}
+    10%{transform: scale(1.05);}
+    20%{transform: scale(1.1);}
+    30%{transform: scale(1.15);}
+    40%{transform: scale(1.2);}
+    50%{transform: scale(1.25);}
+    60%{transform: scale(1.2);}
+    70%{transform: scale(1.15);}
+    80%{transform: scale(1.1);}
+    90%{transform: scale(1.05);}
+    100%{transform: scale(1);}
+}

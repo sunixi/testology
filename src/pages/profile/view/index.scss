@@ -1,0 +1,264 @@
+.sk-profile-view-page {
+    .sk-not-profile-owner {
+        margin-bottom: calc( 17vw + 4rem) !important;
+    }
+
+    .sk-slider-wrap {
+
+        .sk-photo-pending {
+            top: 0;
+            width: 100%;
+            height: 100%;
+            &>img {
+                height: 18vh!important;
+                width: 18vh!important;
+            }
+        }
+
+        .sk-slider-back {
+            position: absolute;
+            top: 5vh;
+            left: 2vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 100%;
+            z-index: 13;
+            height: 4.5rem;
+            width: 4.5rem;
+            background-color: rgba(0,0,0,0.3);
+
+            .icon {
+                font-size: 3.5rem;
+                color: #fff;
+            }
+        }
+
+        .sk-edit-myprofile {
+            position: absolute;
+            top: 5vh;
+            right: 2vh;
+            margin: 0;
+            z-index: 13;
+            width: 14rem;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .swiper-pagination-bullet {
+            opacity: 1;
+            background-color: #fff;
+        }
+
+        .swiper-pagination-bullet-active {
+            background-color: #2e84ea;
+        }
+    }
+
+    .profile-slider {
+        height: auto;
+
+        .swiper-slide img {
+            width: 100%;
+            height: 55vh;
+            object-fit: cover;
+        }
+
+        .swiper-slide {
+              .sk-no-big-avatar {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background: #EFF1F3;
+
+                    img {
+                      width: 30vh;
+                      height: 30vh;
+                      margin: 12.5vh 0;
+                    }
+              }
+
+              .sk-view-all-photos {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 55vh;
+                    background: #EFF1F3;
+
+                    button {
+                      width: 70%;
+                      font-size: 2rem;
+                    }
+              }
+        }
+        .sk-permission-denied {
+          height: 55vh;
+          background-color: #EFF1F3;
+          img {
+            object-fit: contain;
+            height: 28vw;
+          }
+          h2 {
+            margin: 1.6rem;
+            color: #434649;
+          }
+          button {
+            width: 55%;
+            margin-top: 2rem;
+            border-width: 2px;
+          }
+        }
+    }
+
+    .sk-profile-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.6rem 1.8rem;
+        border-bottom: 1px solid #CFD9E2;
+
+        .sk-user-info {
+            display: flex;
+            flex-direction: column;
+
+            span {
+                max-width: 70vw;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            .sk-name {
+                font-size: 2rem;
+            }
+
+            .sk-info {
+                font-size: 1.6rem;
+                color: #9AA0A5;
+            }
+        }
+
+        .sk-user-cnx {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .icon {
+                font-size: 4rem;
+                color: #CFD9E2;
+            }
+        }
+    }
+
+    .sk-profile-comp {
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+        align-items: center;
+        padding: 1.6rem 1.8rem;
+        border-bottom: 1px solid #CFD9E2;
+
+        &>span {
+          font-size: 1.8rem;
+        }
+
+        .sk-comp-bar {
+            background: linear-gradient(to right, #f08d31 0%, #ee0e5c 100%);
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+            flex: 1;
+            margin-left: 12px;
+            height: 2.2rem;
+            border-radius: 5px;
+
+            span {
+                color:#fff;
+            }
+
+            &-mask {
+                width: 100%;
+                height: 100%;
+                border-radius: 3px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+
+    .sk-profile-bottom {
+        .sk-profile-section {
+            padding: 1.6rem 1.8rem;
+            border-bottom: 1px solid #CFD9E2;
+
+            .sk-section-head {
+                font-size: 1.8rem;
+            }
+
+            .sk-section-text {
+                margin: 0.2rem 0 0;
+                font-size: 1.6rem;
+                color: #9AA0A5;
+            }
+        }
+    }
+}
+
+.sk-profile-footer {
+    box-shadow: 0px -10px 28px 0px rgba(255,255,255,1);
+    display: block;
+
+    .sk-profile-actions {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem 0 2rem;
+
+        .sk-like,
+        .sk-dislike {
+            height: 17vw;
+            width: 17vw;
+            margin: 0 0.8rem;
+        }
+
+        .sk-messages,
+        .sk-bookmark,
+        .sk-bookmarked {
+            width: 13vw;
+            height: 13vw;
+            margin: 0 2rem;
+        }
+
+        .sk-messages {
+            background-image: url("../assets/img/ic_messages_new.svg");
+        }
+
+        .sk-bookmark {
+            background-image: url("../assets/img/ic_bookmark_new.svg");
+        }
+
+        .sk-bookmarked {
+            background-image: url("../assets/img/ic_bookmark_active.svg");
+        }
+
+        .sk-like {
+            background-image: url("../assets/img/ic_match.svg");
+        }
+
+        .sk-dislike {
+            background-image: url("../assets/img/ic_dismatch.svg");
+        }
+
+        button {
+            background-size: contain;
+            background-color: transparent;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    }
+}
+
+.sk-profile-footer-disabled {
+    display: none;
+}

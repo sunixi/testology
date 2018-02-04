@@ -1,0 +1,258 @@
+@import "../index.scss";
+
+.sk-search-tab {
+    .sk-dashboard-tabs-search-bar {
+        position: relative;
+        padding-bottom: 8px;
+
+        ion-searchbar {
+            margin-top: 8px;
+            padding: 6px 48px 0 16px;
+            border: 0;
+            background-color: #fff;
+
+            .searchbar-input {
+                padding-left: 8px!important;
+                padding-right: 54px;
+                background-color: #f0f3f8;
+                font-size: 1.4rem;
+            }
+
+            .searchbar-clear-icon {
+                right: 24px;
+            }
+        }
+
+        ion-searchbar.searchbar-md {
+            .searchbar-search-icon {
+                width: 32px;
+                height: 32px;
+                background-size: 28px;
+            }
+
+            .searchbar-input {
+                padding-right: 68px;
+                box-shadow: none;
+                border-radius: 8px;
+            }
+
+            .searchbar-clear-icon {
+                right: 42px;
+                background-size: 30px;
+            }
+        }
+
+        .searchbar-search-icon {
+            transform: scale(-1, 1);
+            width: 18px;
+            height: 18px;
+            background-size: 17px;
+            top: 7px;
+            left: auto;
+            right: 7px;
+        }
+
+        .sk-searchlist {
+            position: absolute;
+            top: 14px;
+            right: 16px;
+            height: 21px;
+            width: 21px;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-image: url("../assets/img/ic_search.svg");
+        }
+    }
+
+    .sk-user-cards {
+        min-height: 100vh;
+    }
+
+    .sk-user-cards-searchmode {
+        .sk-item-card {
+            margin: 10px 8px 16px 16px;
+            border: 1px solid #d0dae3;
+            border-radius: 8px;
+            width: calc(50% - 24px);
+            float: left!important;
+            &:nth-child(2n) {
+                margin: 10px 16px 16px 8px;
+            }
+
+            user-avatar {
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                // height: 25vh;
+                // min-height: 160px;
+                height: 180px;
+                overflow: hidden;
+                touch-action: initial!important;
+                user-select: initial!important;
+                -webkit-user-drag: initial!important;
+                background: #EFF1F3;
+                border-top-left-radius: 8px;
+                border-top-right-radius: 8px;
+
+                .sk-no-big-avatar {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    // height: 25vh;
+                    // min-height: 160px;
+                    height: 180px;
+                    background: #EFF1F3;
+                    border-top-left-radius: 8px;
+                    border-top-right-radius: 8px;
+
+                    img {
+                        width: 55%;
+                        margin: 15vh 0;
+                        border-radius: 0;
+                        height: auto;
+                    }
+                }
+            }
+
+            img {
+                object-fit: cover;
+                object-position: center 15%;
+                margin: -1px -1px 0 -1px;
+                max-width: calc(100% + 2px);
+                width: calc(100% + 2px);
+                border-top-left-radius: 8px;
+                border-top-right-radius: 8px;
+                height: 100%;
+            }
+
+            .sk-card-bottom {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 1rem 1.2rem;
+
+                .sk-card-info {
+                    position: relative;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    flex: 1;
+
+                    .sk-name {
+                        display: flex;
+                        justify-content: flex-start;
+                        margin-bottom: 0.3rem;
+                        font-size: 1.6rem;
+
+                        span {
+                            display: inline-block;
+                            max-width: 27vw;
+                            text-align: left;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                        }
+
+                        b {
+                            display: inline-table;
+                            position: relative;
+                            padding-right: 2rem;
+                            font-weight: normal;
+                        }
+                    }
+
+                    .sk-info {
+                        font-size: 1.4rem;
+                        color: #9AA0A5;
+                        span {
+                            display: inline-block;
+                            max-width: 35vw;
+                            text-align: left;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                        }
+                    }
+
+                    .sk-comp-bar {
+                        width: 100%;
+                        background: linear-gradient(to right, #f08d31 0%, #ee0e5c 100%);
+                        display: flex;
+                        justify-content: center;
+                        align-content: center;
+                        align-items: center;
+                        flex: 1;
+                        height: 2.2rem;
+                        margin-top: 6px;
+                        border-radius: 5px;
+
+                        span {
+                            color:#fff;
+                        }
+                        &-mask {
+                            width: 100%;
+                            height: 100%;
+                            border-radius: 3px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            font-size: 1.3rem;
+                        }
+                    }
+                }
+
+                .sk-card-buttons {
+                    display: inline-table;
+
+                    button {
+                        height: 12vw;
+                        width: 12vw;
+                        margin: 0 0.2rem;
+                        background-size: cover;
+                        background-color: transparent;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                    }
+
+                    .sk-dislike {
+                        background-image: url("../assets/img/ic_dismatch.svg");
+                    }
+
+                    .sk-like {
+                        background-image: url("../assets/img/ic_match.svg");
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .sk-search-tab .sk-user-cards-searchmode .sk-item-card .sk-no-big-avatar {
+        height: 160px!important;
+    }
+    .sk-search-tab .sk-user-cards-searchmode .sk-item-card user-avatar {
+        height: 160px!important;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .sk-search-tab .sk-user-cards-searchmode .sk-item-card .sk-no-big-avatar {
+        height: 140px!important;
+    }
+    .sk-search-tab .sk-user-cards-searchmode .sk-item-card user-avatar {
+        height: 140px!important;
+    }
+    .sk-search-tab .sk-user-cards-searchmode .sk-card-bottom .sk-card-info .sk-name span {
+        max-width: 25vw!important;
+    }
+}
+
+@media screen and (max-height: 320px) {
+    .sk-permission-denied h2, .sk-nothing-found h2 {
+        margin-top: 1vh;
+    }
+    .sk-permission-denied span, .sk-nothing-found span {
+        display: none;
+    }
+}

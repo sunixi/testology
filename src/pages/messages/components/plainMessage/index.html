@@ -1,0 +1,48 @@
+<div class="sk-message-wrap sk-message-type-plain-message {{message.notDelivered && !isSendingInProcess ? 'sk-message-error' : ' '}} {{ message.attachments.length ? 'sk-message-type-attachment' : '' }}">
+    <span class="sk-message-date" *ngIf="message.date && (!prevMessage || prevMessage && prevMessage.date != message.date)">{{message.dateLabel}}</span>
+    <div class="sk-message {{message.isAuthor ? 'sk-message-sent' : 'sk-message-received'}}">
+
+        <!-- message -->
+        <div *ngIf="isReadMessageAllowed">
+            <p *ngIf="!message.attachments.length" [innerHTML]="message.text | nlbr"></p>
+
+            <!-- attachments -->
+            <div class="sk-attachments-wrap" *ngFor="let attachment of message.attachments">
+                <img *ngIf="attachment.type == 'image'" class="sk-attachment-img" [src]="attachment.downloadUrl" (click)="viewPhoto(attachment.downloadUrl)" />
+                <div *ngIf="attachment.type != 'image'" class="sk-attachment-file">
+                    <a href="{{attachment.downloadUrl}}">{{attachment.fileName}}</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- click to read message -->
+        <div *ngIf="!isReadMessageAllowed && isReadMessageAllowedAfterTracking">
+            <button ion-button clear [disabled]="isMessageOpening" (click)="showMessage()"><p>{{ 'read_mailbox_message' | translate }}</p></button>
+        </div>
+
+        <!-- click to upgrade -->
+        <div *ngIf="!isReadMessageAllowed && isReadMessagePromoted && !isReadMessageAllowedAfterTracking">
+            <button ion-button clear (click)="showPurchasesPage()"><p>{{ 'view_mailbox_message_upgrade' | translate }}</p></button>
+        </div>
+
+        <!-- permission denied -->
+        <div *ngIf="!isReadMessageAllowed && !isReadMessagePromoted && !isReadMessageAllowedAfterTracking">
+            {{ 'view_mailbox_message_denied' | translate }}
+        </div>
+
+        <!-- time -->
+        <p class="sk-message-time" *ngIf="message.timeLabel || message.deliverInProcess">
+            <span *ngIf="message.timeLabel">
+                {{message.timeStamp | amFromUnix | amDateFormat:'hh:mmA'}}
+                <img *ngIf="message.isAuthor && !message.recipientRead" src="./assets/img/ic_chat_sent.svg" alt="" />
+                <img *ngIf="message.isAuthor && message.recipientRead" src="./assets/img/ic_chat_received.svg" alt="" />
+            </span>
+            <span *ngIf="message.deliverInProcess">
+                <img *ngIf="message.deliverInProcess" src="./assets/img/ic_clock.svg" alt="" />
+            </span>
+        </p>
+    </div>
+    <div *ngIf="message.notDelivered && !isSendingInProcess" class="sk-message-deliver-error">
+        <img (click)="showMessageActions()" src="./assets/img/ic_chat_warn.svg" alt="">
+    </div>
+</div>

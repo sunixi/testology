@@ -1,0 +1,88 @@
+// loading
+.sk-searchlist-loading {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+
+    .sk-circle-anim_wrap {
+        position: relative;
+        z-index: 2;
+        transform: translate3d(0,0,0);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            position: relative;
+            z-index: 3;
+            top: 0;
+            width: 10rem;
+            height: 10rem;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            object-fit: cover;
+        }
+    }
+
+    @keyframes sk-circle {
+        0% {
+            transform: scale(0);
+        }
+        100% {
+            opacity: 0;
+            transform: scale(4);
+        }
+    }
+
+    .sk-circle-anim {
+        width: 8rem;
+        height: 8rem;
+        margin: auto;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: linear-gradient(to right, #f08d31 0%, #ee0e5c 100%);
+        border: 1px solid #ee0e5c;
+        border-radius: 50%;
+        position: absolute;
+        z-index: 1;
+        animation: sk-circle 4s infinite ease-out;
+        animation-fill-mode: forwards;
+    }
+
+    .sk-circle-anim_second {
+        animation-delay: 1.3s;
+    }
+
+    .sk-circle-anim_third {
+        animation-delay: 2.6s;
+    }
+
+    user-avatar {
+        width: 10rem;
+        height: 10rem;
+    }
+
+    .sk-photo-pending {
+        width: 10rem;
+        height: 10rem;
+        position: absolute;
+        z-index: 4;
+        border-radius: 50%;
+        border: 3px solid #fff;
+        img {
+            top: 0;
+            width: 5vh;
+            height: 5vh;
+            border: 0;
+        }
+    }
+
+}
+
+.sk-tinder-tab {
+    .sk-searchlist-loading {
+        transform: translateY(-54px);
+    }
+}

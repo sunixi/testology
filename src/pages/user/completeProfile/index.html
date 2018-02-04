@@ -1,0 +1,25 @@
+
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{ 'complete_profile_page_header' | translate }}</ion-title>
+        <ion-buttons end>
+            <button ion-button clear *ngIf="formReady" [disabled]="!form.valid || updatingUserProfile" (click)="submit()">{{ 'done' | translate }}</button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="sk-complete-profile-page">
+    <form *ngIf="formReady" [formGroup]="form">
+        <ion-list>
+            <div class="wrap">
+                <!-- questions -->
+                <div *ngFor="let sectionData of sections">
+                    <ion-item-divider text-wrap class="sk-questions-section" *ngIf="sectionData.section" color="light">
+                        <span>{{sectionData.section}}</span>
+                    </ion-item-divider>
+                    <question *ngFor="let question of sectionData.questions" [question]="question" [form]="form"></question>
+                </div>
+            </div>
+        </ion-list>
+    </form>
+</ion-content>

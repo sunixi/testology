@@ -1,0 +1,175 @@
+.sk-login-page {
+    min-height: 480px;
+    background-image: url("../assets/img/index.jpg");
+    background-size: cover;
+    background-position: center;
+
+    .wrap {
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 16vw;
+
+        .sk-logo {
+            display: block;
+            width: 14vh;
+            margin: 3rem auto 0;
+        }
+
+        ion-list.sk-inputs {
+            margin: 4rem 0 2rem;
+
+            .item-md {
+                padding: 0;
+            }
+
+            .item-inner {
+                padding-left: 32px;
+                border-bottom: 1px solid rgba(255,255,255, 0.3);
+                background-size: auto 68%;
+                background-position: center left;
+                background-repeat: no-repeat;
+
+                input {
+                    font-size: 1.8rem;
+                    color: #fff;
+                    &::-webkit-input-placeholder {color:#fff;}
+                    &::-moz-placeholder          {color:#fff;}
+                    &:-moz-placeholder           {color:#fff;}
+                    &:-ms-input-placeholder      {color:#fff;}
+                }
+            }
+
+            .sk-fpass {
+                height: 2.5rem;
+                min-height: 22px;
+                margin: 0;
+                .button-inner {
+                    height: 0;
+                }
+            }
+
+            .sk-fpass.button-ios {
+                padding: 0;
+            }
+
+            .sk-fpass.button-md {
+                padding: 0;
+            }
+
+            .sk-base-question-presentation {
+                ion-item {
+                    background-color: transparent;
+                    &.item-ios {
+                        padding-left: 0;
+                    }
+                }
+                &.sk-name {
+                    .item-inner {
+                        background-image: url("../assets/img/ic_input_name.svg");
+                    }
+                }
+
+                &.sk-password {
+                    margin-top: 2rem;
+                    margin-bottom: 0.6rem;
+
+                    .item-inner {
+                        background-image: url("../assets/img/ic_input_password.svg");
+                    }
+                }
+            }
+        }
+
+        .sk-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .sk-site-url {
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 1.2rem;
+                height: 3.6rem;
+                min-height: 22px;
+                margin: 0.5rem;
+                border: 0;
+                color: #fff;
+
+                .icon {
+                    font-size: 3.5rem;
+                }
+
+            }
+
+            button {
+                height: 5.5rem;
+                margin-bottom: 1rem;
+                font-size: 1.8rem;
+
+                .button-inner {
+                    height: initial;
+                }
+                &.activated {
+                    opacity: 0.8;
+                }
+            }
+
+            button.sk-signup.activated, button.sk-fbconnect.activated,
+            button.sk-site-url.activated {
+                background-color: transparent;
+            }
+
+            .sk-login {
+                background-color: #358DFF;
+            }
+
+            .sk-line {
+                width: 1px;
+                height: 22px;
+                margin: 1rem 0 2rem;
+                background-color: rgba(255, 255, 255, 0.3);
+            }
+
+            .sk-signup {
+                color: #FF554D;
+                border-color: #FF554D;
+            }
+
+            .sk-fbconnect {
+                color: #358DFF;
+                border-color: #358DFF;
+            }
+        }
+    }
+}
+
+.sk-login-page.sk-login-url .wrap .sk-buttons .sk-fbconnect {
+    margin-bottom: 6rem;
+}
+
+@media (max-width:360px) {
+    .sk-login-page .wrap {
+        padding: 0 12vw;
+    }
+}
+
+@media (max-height:479px) {
+    .sk-login-page .wrap .sk-buttons .sk-site-url {
+        display: none;
+    }
+}
+
+@media (max-height:639px) {
+    .sk-login-page .wrap .sk-logo {
+        margin: 2rem auto 0;
+    }
+    .sk-login-page .wrap ion-list.sk-inputs {
+        margin: 2.5rem 0 2rem;
+    }
+    .sk-login-page .wrap .sk-buttons .sk-line {
+        display: none;
+    }
+}

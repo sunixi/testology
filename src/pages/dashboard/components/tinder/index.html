@@ -1,0 +1,61 @@
+<div class="sk-tinder-tab sk-navigation-tab">
+
+    <!-- search is not allowed   -->
+    <div class="sk-permission-denied" *ngIf="!isSearchAllowed">
+        <img src="./assets/img/no_permission.svg" alt="">
+        <h2>{{ 'permission_denied_header' | translate }}</h2>
+        <span>{{ 'permission_denied_alert_message' | translate }}</span>
+        <button ion-button outline round [navPush]="inappsPage">{{ 'upgrade' | translate }}</button>
+    </div>
+
+    <!-- loading wrapper -->
+    <div class="sk-searchlist-loading" *ngIf="!cards.length && isSearchAllowed">
+        <div class="sk-circle-anim_wrap">
+            <div class="sk-circle-anim sk-circle-anim_first"></div>
+            <div class="sk-circle-anim sk-circle-anim_second"></div>
+            <div class="sk-circle-anim sk-circle-anim_third"></div>
+            <user-avatar [useBigAvatar]="false" [url]="currentUser?.avatar?.pendingUrl"></user-avatar>
+            <div *ngIf="currentUser?.avatar?.id && !currentUser?.avatar?.active" class="sk-photo-pending">
+                <img src="./assets/img/ic_pending.svg" alt="">
+            </div>
+        </div>
+    </div>
+
+    <!-- tinder cards -->
+    <div *ngIf="cards.length && isSearchAllowed" class="sk-tinder-cards-wrapper" swing-stack [stackConfig]="stackConfig" (dragend)="tinderCardStopMoving()" (dragmove)="tinderCardMoving($event)" (throwoutleft)="dislikeUser(true, false)" (throwoutright)="likeUser(true, false)">
+        <ion-card swing-card *ngFor="let card of cards">
+            <div [class]="card.swipeDirection ? (card.swipeDirection == 'left' ? 'swiper-no-swiping sk-card-wrapper sk-swipe-left' : 'swiper-no-swiping sk-card-wrapper sk-swipe-right') : 'swiper-no-swiping sk-card-wrapper'" [@removed]="card.status">
+                <div class="sk-item-card">
+                    <div class="sk-tinder-cover" (tap)="viewProfile(card.id)">
+                        <div class="sk-tinder-like">
+                            <span>{{ 'yes' | translate }}</span>
+                        </div>
+                        <div class="sk-tinder-dislike">
+                            <span>{{ 'nope' | translate }}</span>
+                        </div>
+                    </div>
+                    <user-avatar [useBigAvatar]="true" [url]="card.avatar.bigUrl" [isAvatarActive]="card.avatar.active"></user-avatar>
+                    <div class="{{card.isOnline ? 'sk-card-bottom sk-user-online' : 'sk-card-bottom'}}">
+                        <div class="sk-card-info">
+                            <div class="sk-name"><span>{{card.displayName ? card.displayName : card.userName}}</span><b *ngIf="card.age">, {{card.age}}</b></div>
+                            <span class="sk-info" *ngIf="card.distance.distance">
+                                <span *ngIf="card.distance.unit == 'km'">{{ 'km_away' | translate:{value: card.distance.distance} }}</span>
+                                <span *ngIf="card.distance.unit == 'miles'">{{ 'miles_away' | translate:{value: card.distance.distance} }}</span>
+                            </span>
+                            <div class="sk-comp-bar">
+                                <div class="sk-comp-bar-mask" [style.background]="getCompatibilityBackground(card.compatibility.match)">
+                                    <span>{{card.compatibility.match ? card.compatibility.match : 0}}%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sk-card-buttons">
+                            <button (tap)="dislikeConfirmation(card)" class="sk-dislike" ></button>
+                            <button (tap)="likeConfirmation(card)" class="sk-like"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ion-card>
+    </div>
+
+</div>

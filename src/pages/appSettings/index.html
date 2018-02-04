@@ -1,0 +1,32 @@
+<ion-header>
+    <ion-navbar hideBackButton>
+        <ion-buttons end>
+            <button ion-button navPop>
+                {{ 'done' | translate }}
+            </button>
+        </ion-buttons>
+        <ion-title>{{ 'profile_app_settings' | translate }}</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content class="sk-app-settings-page">
+    <div class="sk-join-fields">
+        <div class="wrap">
+            <ion-item text-wrap class="sk-section">
+                <span>{{ 'app_settings_basic_information_label' | translate }}</span>
+            </ion-item>
+            <ion-item class="sk-join-select sk-join-button" (tap)="showPrivacyPolicyModal()">
+                <ion-label>{{ 'app_settings_privacy_policy_label' | translate }}</ion-label>
+            </ion-item>
+            <ion-item class="sk-join-select sk-join-button" (tap)="showTermsOfUseModal()">
+                <ion-label>{{ 'app_settings_terms_of_use_label' | translate }}</ion-label>
+            </ion-item>
+        </div>
+        <div class="sk-delimiter"></div>
+        <div class="wrap">
+            <button class="sk-logout-button" ion-button clear full (click)="logout()">{{ 'logout' | translate }}</button>
+            <button class="sk-delete-button" ion-button clear full (click)="deleteAccountConfirmation()" *ngIf="!user?.isAdmin">
+                {{ 'app_settings_delete_account_button' | translate }}
+            </button>
+        </div>
+    </div>
+</ion-content>

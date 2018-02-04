@@ -1,0 +1,42 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{ 'compatible_users_page_header' | translate }}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="sk-compatible-users-page">
+    <div *ngIf="pageReady">
+
+        <!-- nothing found wrapper  -->
+        <div class="sk-nothing-found" *ngIf="!users.length">
+            <img src="./assets/img/user_not_found.svg" alt="">
+            <h2>{{ 'empty_user_search_header' | translate }}</h2>
+        </div>
+
+        <!-- users wrapper -->
+        <ion-list class="sk-userlist" *ngIf="users.length">
+            <ion-item-sliding *ngFor="let user of getUserList()">
+                <ion-item (tap)="viewProfile(user.id)">
+                    <ion-avatar item-left>
+                        <user-avatar [url]="user.avatar.url" [isAvatarActive]="user.avatar.active"></user-avatar>
+                    </ion-avatar>
+                    <h2>{{user.displayName ? user.displayName : user.userName}}</h2>
+                    <p>{{ 'compatibility' | translate }}: {{user.compatibility}}</p>
+                </ion-item>
+                <ion-item-options side="right">
+                    <button ion-button color="green" *ngIf="!user.matchActions.type" (click)="likeUser(user)">
+                        {{ 'like' | translate }}
+                    </button>
+                    <button ion-button color="primary" (click)="showChat(user.id)">
+                        {{ 'send_message' | translate }}
+                    </button>
+                </ion-item-options>
+            </ion-item-sliding>
+        </ion-list>
+
+        <ion-infinite-scroll (ionInfinite)="loadMoreUsers()">
+            <ion-infinite-scroll-content></ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+
+    </div>
+</ion-content>

@@ -1,0 +1,9 @@
+<ion-content class="sk-app-mtnmode-page">
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <div class="wrap">
+        <img src="./assets/img/mtn-mode.png" alt="">
+        <p class="sk-text" [innerHTML]="'maintenance_mode' | translate"></p>
+    </div>
+</ion-content>

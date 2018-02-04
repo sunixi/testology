@@ -1,0 +1,221 @@
+@import "../index.scss";
+
+.sk-tinder-tab {
+    .sk-tinder-cards-wrapper {
+        height: 100vh;
+        background-color: #fff;
+        position: relative;
+
+        ion-card {
+            position: absolute;
+            width: calc(100% - 40px);
+            margin: 3.5vh 20px 16px;
+            box-shadow: none;
+            border-radius: 12px;
+
+            .sk-card-wrapper {
+                height:100%;
+
+                &.sk-swipe-left {
+                    .sk-item-card {
+                        .sk-tinder-cover {
+                            opacity: 1;
+                            background-color: rgba(240,53,72, 0.2);
+                            -webkit-transition: opacity 0.2s ease-in-out;
+                            -moz-transition: opacity 0.2s ease-in-out;
+                            -ms-transition: opacity 0.2s ease-in-out;
+                            -o-transition: opacity 0.2s ease-in-out;
+                            transition: opacity 0.2s ease-in-out;
+                            .sk-tinder-dislike {
+                                display: block;
+                            }
+                        }
+                    }
+                }
+                &.sk-swipe-right {
+                    .sk-item-card {
+                        .sk-tinder-cover {
+                            opacity: 1;
+                            background-color: rgba(87,255,142, 0.2);
+                            -webkit-transition: opacity 0.2s ease-in-out;
+                            -moz-transition: opacity 0.2s ease-in-out;
+                            -ms-transition: opacity 0.2s ease-in-out;
+                            -o-transition: opacity 0.2s ease-in-out;
+                            transition: opacity 0.2s ease-in-out;
+                            .sk-tinder-like {
+                                display: block;
+                            }
+                        }
+                    }
+                }
+
+                .sk-item-card {
+                    border: 1px solid #d0dae3;
+                    border-radius: 12px;
+
+                    .sk-tinder-cover {
+                        position: absolute;
+                        opacity: 0;
+                        height: 65vh;
+                        width: 100%;
+                        -webkit-transition: opacity 0.2s ease-in-out;
+                        -moz-transition: opacity 0.2s ease-in-out;
+                        -ms-transition: opacity 0.2s ease-in-out;
+                        -o-transition: opacity 0.2s ease-in-out;
+                        transition: opacity 0.2s ease-in-out;
+                        .sk-tinder-dislike, .sk-tinder-like {
+                            display: none;
+                            padding: 24px;
+                        }
+                        .sk-tinder-dislike {
+                            text-align: right;
+                        }
+                        .sk-tinder-like {
+                            text-align: left;
+                        }
+                        span {
+                            display: inline-block;
+                            padding: 0 16px;
+                            font-size: 2.8rem;
+                            font-weight: 500;
+                            text-transform: uppercase;
+                            color: #fff;
+                            border: 3.2px solid #fff;
+                            border-radius: 4px;
+                        }
+                    }
+
+                    user-avatar {
+                        display: block;
+                        height: 65vh;
+                        overflow: hidden;
+                        touch-action: initial!important;
+                        user-select: initial!important;
+                        -webkit-user-drag: initial!important;
+                        background: #EFF1F3;
+                        border-top-left-radius: 12px;
+                        border-top-right-radius: 12px;
+
+
+                        .sk-no-big-avatar {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+                            height: 65vh;
+                            background: #EFF1F3;
+                            border-top-left-radius: 8px;
+                            border-top-right-radius: 8px;
+
+                            img {
+                                width: 55%;
+                                margin: 15vh 0;
+                                border-radius: 0;
+                                object-fit: contain;
+                            }
+                        }
+                    }
+
+                    img {
+                        margin: -1px -1px 0 -1px;
+                        max-width: calc(100% + 2px);
+                        width: calc(100% + 2px);
+                        border-top-left-radius: 8px;
+                        border-top-right-radius: 8px;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+
+                    .sk-card-bottom {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding: 1.6rem 1.8rem;
+
+                        .sk-card-info {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: flex-start;
+                            flex: 1;
+                            margin-right: 8vw;
+
+                            .sk-name {
+                                display: flex;
+                                justify-content: flex-start;
+                                font-size: 2rem;
+
+                                span {
+                                    display: inline-block;
+                                    max-width: 33vw;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                    white-space: nowrap;
+                                }
+
+                                b {
+                                    display: inline-table;
+                                    position: relative;
+                                    padding-right: 2.5rem;
+                                    font-weight: normal;
+                                }
+                            }
+
+                            .sk-info {
+                                font-size: 1.6rem;
+                                color: #9AA0A5;
+                            }
+
+                            .sk-comp-bar {
+                                width: 100%;
+                                background: linear-gradient(to right, #f08d31 0%, #ee0e5c 100%);
+                                display: flex;
+                                justify-content: center;
+                                align-content: center;
+                                align-items: center;
+                                flex: 1;
+                                height: 2.2rem;
+                                margin-top: 6px;
+                                border-radius: 5px;
+
+                                span {
+                                    color:#fff;
+                                }
+                                &-mask {
+                                    width: 100%;
+                                    height: 100%;
+                                    border-radius: 3px;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    font-size: 1.3rem;
+                                }
+                            }
+                        }
+
+                        .sk-card-buttons {
+                            display: inline-table;
+
+                            button {
+                                height: 12vw;
+                                width: 12vw;
+                                margin: 0 0.2rem;
+                                background-size: cover;
+                                background-color: transparent;
+                                background-repeat: no-repeat;
+                                background-position: center;
+                            }
+
+                            .sk-dislike {
+                                background-image: url("../assets/img/ic_dismatch.svg");
+                            }
+
+                            .sk-like {
+                                background-image: url("../assets/img/ic_match.svg");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

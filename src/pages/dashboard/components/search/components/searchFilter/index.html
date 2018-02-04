@@ -1,0 +1,27 @@
+<ion-header>
+    <ion-navbar>
+        <ion-buttons start>
+            <button ion-button clear *ngIf="formReady" (click)="dismiss()">{{ 'cancel' | translate }}</button>
+        </ion-buttons>
+        <ion-title>{{ 'search_filter_page_header' | translate }}</ion-title>
+        <ion-buttons end>
+            <button ion-button clear *ngIf="formReady" [disabled]="!form.valid" (click)="close()">{{ 'done' | translate }}</button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="sk-user-search-filter-page">
+    <form *ngIf="formReady" [formGroup]="form">
+        <ion-list class="sk-user-search-fields">
+            <div class="wrap">
+                <!-- questions -->
+                <div *ngFor="let sectionData of sections">
+                    <ion-item-divider text-wrap class="sk-questions-section" *ngIf="sectionData.section" color="light">
+                        <span>{{sectionData.section}}</span>
+                    </ion-item-divider>
+                    <question *ngFor="let question of sectionData.questions" [question]="question" [form]="form"></question>
+                </div>
+            </div>
+        </ion-list>
+    </form>
+</ion-content>

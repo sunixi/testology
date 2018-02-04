@@ -1,0 +1,36 @@
+.sk-guests-page {
+    .sk-userlist {
+        .list-ios {
+            margin: 0px 0 32px 0;
+        }
+
+        .list .item {
+            border-top: 0.55px solid #c8c7cc;
+            padding: 0.5rem 0 0.5rem 1.6rem;
+
+            ion-avatar img{
+                width: 4.2rem;
+                height: 4.2rem;
+            }
+
+            .item-inner {
+                border: 0;
+            }
+        }
+
+        ion-item-options {
+            border: 0;
+        }
+
+        ion-item-options button.button{
+            width: 9rem;
+            text-overflow: ellipsis;
+            white-space: normal;
+            font-weight: 500;
+        }
+
+        .button-ios-bg-grey {
+            color: #fff;
+        }
+    }
+}

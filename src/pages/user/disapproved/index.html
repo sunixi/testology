@@ -1,0 +1,27 @@
+<ion-content class="sk-reg-pending" padding>
+
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+    <div class="wrap">
+        <img class="sk-success-icon" src="./assets/img/ic_alert.png" alt="" />
+
+        <div class="sk-section" *ngIf="isSuspended()">
+            <h2>{{ 'profile_suspended' | translate }}</h2>
+            <p>{{ 'reason' | translate }}: {{description}}</p>
+        </div>
+
+        <div class="sk-section" *ngIf="!isSuspended()">
+            <h2>{{ 'profile_is_pending_approval' | translate }}</h2>
+        </div>
+    </div>
+</ion-content>
+<ion-footer class="sk-back-footer">
+    <ion-toolbar>
+        <button type="button" ion-button block clear icon-left (click)="logout()">
+            <ion-icon name="ios-arrow-back"></ion-icon>
+            {{ 'disapproved_back_button' | translate }}
+        </button>
+    </ion-toolbar>
+</ion-footer>

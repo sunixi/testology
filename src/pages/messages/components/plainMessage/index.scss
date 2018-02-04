@@ -1,0 +1,10 @@
+.sk-messages-page button {
+    width: 100%;
+    span {
+        p {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+}

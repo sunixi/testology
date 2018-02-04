@@ -1,0 +1,41 @@
+.sk-memberships-inner-page {
+  background-color: #f0f4f8;
+  .sk-membership-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1.5rem;
+    padding: 2.5rem 1.5rem;
+    background-color: #fff;
+    font-size: 1.7rem;
+    .sk-membership-price span {
+      margin-right: 0.6rem;
+      &:first-child {
+        color: #03D848;
+      }
+    }
+    ion-icon {
+        font-size: 2.5rem;
+        color: #C7C7CC;
+    }
+    &>span {
+      color: #AFB9C1;
+    }
+  }
+  .sk-section {
+    padding: 1.5rem 1.5rem 0.7rem;
+    font-size: 1.5rem;
+    color: #6D6D72;
+  }
+  ion-list {
+    margin-bottom: 0;
+    ion-item {
+      &:first-child, &:last-child{
+        border: 0!important;
+      }
+      .item-inner {
+        border-color: #f0f4f8!important;
+      }
+    }
+  }
+}

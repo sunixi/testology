@@ -1,0 +1,31 @@
+<ion-header>
+    <ion-toolbar class="sk-dashboard-toolbar">
+        <dashboard-tabs *ngIf="pageReady && isDashboardActive" (componentChanged)="changeComponent($event)" [activeComponent]="activeComponent" [activeSubComponent]="activeSubComponent"></dashboard-tabs>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content no-bounce class="sk-dashboard-page">
+
+    <!-- component slider -->
+    <div class="sk-components-slider-wrapper" ion-fixed>
+        <ion-slides #componentsSlider (ionSlideDidChange)="sliderDidChange()">
+            <ion-slide>
+                <profile *ngIf="pageReady && isDashboardActive" [activeComponent]="activeComponent"></profile>
+            </ion-slide>
+            <ion-slide>
+                <hot-list *ngIf="pageReady && isDashboardActive && (activeSubComponent == 'hot-list' || !activeSubComponent)" [activeComponent]="activeComponent"></hot-list>
+                <tinder *ngIf="pageReady && activeSubComponent == 'tinder'" [activeComponent]="activeComponent"></tinder>
+                <search *ngIf="pageReady && activeSubComponent == 'search'" [activeComponent]="activeComponent"></search>
+            </ion-slide>
+            <ion-slide>
+                <conversations *ngIf="pageReady && isDashboardActive" [activeComponent]="activeComponent"></conversations>
+            </ion-slide>
+        </ion-slides>
+    </div>
+
+    <!-- preloader -->
+    <div *ngIf="!pageReady" class="sk-main-preloader">
+        <img src="./assets/img/preloader.svg" alt="">
+    </div>
+
+</ion-content>

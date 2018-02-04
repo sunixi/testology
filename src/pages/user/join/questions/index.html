@@ -1,0 +1,34 @@
+
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{ 'join_page_header' | translate }}</ion-title>
+        <ion-buttons end>
+            <button ion-button clear *ngIf="formReady" [disabled]="!form.valid || creatingUserProfile || !isTosValid()" (click)="submit()">{{ 'done' | translate }}</button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="sk-join-questions-page">
+    <form *ngIf="formReady" [formGroup]="form">
+        <ion-list class="sk-join-fields">
+            <div class="wrap">
+                <!-- questions -->
+                <div *ngFor="let sectionData of sections">
+                    <ion-item-divider text-wrap class="sk-questions-section" *ngIf="sectionData.section" color="light">
+                        <span>{{sectionData.section}}</span>
+                    </ion-item-divider>
+                    <question *ngFor="let question of sectionData.questions" [question]="question" [form]="form"></question>
+                </div>
+                <div *ngIf="isTosActive">
+                    <ion-item-divider color="light">{{ 'tos_section' | translate }}</ion-item-divider>
+                    <ion-item class="sk-tos">
+                        <ion-label>
+                            <button ion-button clear (click)="showTosModal()">{{ 'tos_agree_button' | translate }}</button>
+                        </ion-label>
+                        <ion-toggle [(ngModel)]="tosValue" [ngModelOptions]="{standalone: true}"></ion-toggle>
+                    </ion-item>
+                </div>
+            </div>
+        </ion-list>
+    </form>
+</ion-content>

@@ -1,0 +1,66 @@
+.sk-site-url-page {
+    .wrap {
+        height: 100%;
+        padding: 32px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .sk-success-icon {
+            width: 18vh;
+            margin: 0 0 2rem;
+        }
+
+        .sk-inputs {
+            position: relative;
+            margin: 6rem 0 24px;
+
+            .icon {
+                position: absolute;
+                z-index: 99;
+                left: 0.2em;
+                top: 1.2rem;
+                font-size: 2.2rem;
+                color: #474747;
+            }
+
+            .item {
+              padding-left: 0;
+              .item-inner {
+                padding-right: 0;
+              }
+            }
+
+            .input {
+                padding-left: 2.8rem;
+                letter-spacing: 0.5px;
+                border-bottom: 0.55px solid #c8c7cc;
+                input {
+                  text-transform: lowercase!important;
+                }
+            }
+
+            input {
+                font-size: 1.6rem;
+                &::-webkit-input-placeholder {color:#474747;letter-spacing: 0.5px;}
+                &::-moz-placeholder          {color:#474747;letter-spacing: 0.5px;}
+                &:-moz-placeholder           {color:#474747;letter-spacing: 0.5px;}
+                &:-ms-input-placeholder      {color:#474747;letter-spacing: 0.5px;}
+            }
+        }
+
+        .sk-buttons {
+            width: 100%;
+            min-height: 42px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            button {
+                width: 55%;
+            }
+        }
+    }
+}

@@ -1,0 +1,44 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{ 'guests_page_header' | translate }}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="sk-guests-page">
+    <div *ngIf="pageReady">
+
+        <!-- nothing found wrapper  -->
+        <div class="sk-nothing-found" *ngIf="!guests.length">
+            <img src="./assets/img/user_not_found.svg" alt="">
+            <h2>{{ 'empty_user_search_header' | translate }}</h2>
+        </div>
+
+        <!-- users wrapper -->
+        <ion-list class="sk-userlist" *ngIf="guests.length">
+            <ion-item-sliding *ngFor="let guest of getGuestList()">
+                <ion-item (tap)="viewProfile(guest.guestId)">
+                    <ion-avatar item-left>
+                        <user-avatar [url]="guest.avatar.url" [isAvatarActive]="guest.avatar.active"></user-avatar>
+                    </ion-avatar>
+                    <h2>{{guest.displayName ? guest.displayName : guest.userName}}</h2>
+                </ion-item>
+                <ion-item-options side="right">
+                    <button ion-button color="green" *ngIf="!guest.matchActions.type" (click)="likeUser(guest)">
+                        {{ 'like' | translate }}
+                    </button>
+                    <button ion-button color="primary" (click)="showChat(guest.guestId)">
+                        {{ 'send_message' | translate }}
+                    </button>
+                    <button ion-button color="bg-grey" (click)="removeGuestConfirmation(guest.id)">
+                        {{ 'hidden' | translate }}
+                    </button>
+                </ion-item-options>
+            </ion-item-sliding>
+        </ion-list>
+
+        <ion-infinite-scroll (ionInfinite)="loadMoreGuests()">
+            <ion-infinite-scroll-content></ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+
+    </div>
+</ion-content>

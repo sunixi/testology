@@ -1,0 +1,33 @@
+<div class="sk-hot-list-tab sk-navigation-tab">
+    <ion-scroll #hotListScroll [scrollY]="searchInProgress ? false : true">
+
+        <!-- loading wrapper -->
+        <div class="sk-gradient-preloader" *ngIf="searchInProgress">
+        </div>
+
+        <!-- nothing found wrapper  -->
+        <div class="sk-nothing-found" *ngIf="!searchInProgress && !usersLength">
+            <img src="./assets/img/ic_hotlist.svg" alt="">
+            <span>{{ 'hot_list_empty_desc' | translate }}</span>
+        </div>
+
+        <!-- user list -->
+        <ion-list class="sk-user-cards sk-user-cards-searchmode" *ngIf="!searchInProgress && usersLength">
+            <ng-container *ngFor="let user of getUserList()">
+                <div class="sk-item-card">
+                    <user-avatar [useBigAvatar]="true" [url]="user.avatar.bigUrl" [isAvatarActive]="user.avatar.active" (tap)="viewProfile(user)"></user-avatar>
+                    <div class="{{user.isOnline ? 'sk-card-bottom sk-user-online' : 'sk-card-bottom'}}">
+                        <div class="sk-card-info">
+                            <div class="sk-name"><span>{{user.displayName ? user.displayName : user.userName}}</span><b *ngIf="user.age">, {{user.age}}</b></div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </ion-list>
+
+    </ion-scroll>
+
+    <!-- join/remove buttons -->
+    <button ion-button class="sk-hot-list-button" *ngIf="!searchInProgress && !isUserInList && (isHotListJoinAllowed || isHotListJoinPromoted)" (click)="joinToHotList()">{{ 'hot_list_join' | translate }}</button>
+    <button ion-button class="sk-hot-list-button" *ngIf="!searchInProgress && isUserInList" (click)="removeFromHotList()">{{ 'hot_list_remove' | translate }}</button>
+</div>

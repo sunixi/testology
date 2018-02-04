@@ -1,0 +1,29 @@
+<ion-content class="sk-match-modal">
+    <div class="sk-match-modal-wrap">
+        <div class="sk-match-modal-top">
+            <div class="sk-match-modal-text">
+                <h2>{{ 'matched_user_page_header' | translate }}</h2>
+                <span>{{ 'matched_user_desc' | translate:{userName: matchedUser.displayName} }}</span>
+            </div>
+            <div class="sk-match-modal-users">
+                <div class="sk-match-modal-avatar">
+                    <user-avatar [url]="currentUser?.avatar?.pendingUrl"></user-avatar>
+                    <div *ngIf="currentUser?.avatar?.id && !currentUser?.avatar?.active" class="sk-photo-pending">
+                        <img src="./assets/img/ic_pending.svg" alt="">
+                    </div>
+                </div>
+                <div class="sk-match-modal-avatar">
+                    <user-avatar [url]="matchedUser?.avatar?.url" [isAvatarActive]="matchedUser?.avatar?.active"></user-avatar>
+                </div>
+            </div>
+        </div>
+        <div class="sk-match-modal-bottom">
+            <button ion-button outline round (click)="showChat()">
+                <img src="./assets/img/ic_send_message.svg" alt="">{{ 'send_message' | translate }}
+            </button>
+            <button ion-button outline round (click)="close()">
+                <img src="./assets/img/ic_keep_play.svg" alt="">{{ 'keep_playing' | translate }}
+            </button>
+        </div>
+    </div>
+</ion-content>

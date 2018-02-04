@@ -1,0 +1,27 @@
+<ion-header>
+</ion-header>
+<ion-content class="sk-regSuccess" padding>
+  <div class="wrap">
+    <img class="sk-success-icon" src="./assets/img/ic_check.png" alt="">
+    <div class="sk-section">
+      <h2>{{ 'verify_email_registration_successful' | translate }}</h2>
+      <p>{{ 'verify_email_check_email_page_desc' | translate }}</p>
+    </div>
+    <ion-list class="sk-inputs">
+      <question *ngFor="let question of questions" [question]="question" [form]="form"></question>
+    </ion-list>
+    <div class="sk-buttons">
+      <button ion-button block outline round class="sk-login" [disabled]="!form.valid" (click)="submit()">
+        {{ 'verify_email_resend_button' | translate }}
+      </button>
+    </div>
+  </div>
+</ion-content>
+<ion-footer class="sk-back-footer">
+  <ion-toolbar>
+    <button type="button" ion-button block clear icon-left (click)="openLoginPage()">
+      <ion-icon name="ios-arrow-back"></ion-icon>
+      {{ 'verify_email_back_button' | translate }}
+    </button>
+  </ion-toolbar>
+</ion-footer>

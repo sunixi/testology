@@ -1,0 +1,72 @@
+.sk-memberships {
+  ion-segment {
+    padding: 8px;
+  }
+  &-segment {
+    height: 100%;
+    padding: 16px;
+    background-color: #f0f4f8;
+    .sk-memberships-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.5rem;
+      button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+        line-height: 1.7;
+        font-weight: 500;
+        text-transform: uppercase;
+        color: #2F84EB;
+        background-color: transparent;
+        img {
+          margin-left: 5px;
+        }
+      }
+    }
+    .sk-membership-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 1.5rem 0;
+      padding: 1.5rem;
+      background-color: #fff;
+      .wrap {
+        display: flex;
+        flex-direction: column;
+        span {
+          font-size: 1.7rem;
+        }
+        p {
+          max-width: 65vw;
+          margin: 0.5rem 0 0;
+          font-size: 1.3rem;
+          color: #BABABD;
+          span.plan {
+            float: left;
+            clear: both;
+          }
+        }
+      }
+      .icon {
+        font-size: 2.5rem;
+        color: #C7C7CC;
+      }
+    }
+  }
+  .sk-credits-segment {
+    .sk-membership-item {
+      padding: 2.5rem 1.5rem;
+    }
+    .sk-memberships-head button ,
+    .sk-credits-price {
+      color: #03D848;
+    }
+    .sk-credits-price {
+      font-size: 1.7rem;
+    }
+  }
+
+}

@@ -1,0 +1,60 @@
+<div class="sk-conversations-tab sk-navigation-tab">
+
+    <div class="sk-conversation-preloader" *ngIf="!pageReady"></div>
+    <div class="sk-search-bar" *ngIf="getConversations().length || getMatches().length || userNameFilter">
+        <ion-searchbar
+                [(ngModel)]="userNameFilter"
+                (ngModelChange)="userNameFilterChanged()"
+                (search)="closeKeyboard()"
+                placeholder="{{ 'username_input' | translate }}">
+        </ion-searchbar>
+    </div>
+
+    <ion-scroll #conversationsScroll [scrollY]="!pageReady ? false : true">
+        <div class="sk-conversations-wrapper" *ngIf="pageReady">
+            <div class="sk-messages-wrap">
+                <!-- matches list -->
+                <div class="sk-matches-list" *ngIf="getMatches().length">
+                    <span>{{ 'new_matches' | translate }}</span>
+                    <ion-scroll scrollX="true" class="sk-match-scroll swiper-no-swiping">
+                        <div class="sk-matches-wrap">
+                            <div class="sk-match-item {{match.isNew ? 'sk-match-item-new' : ''}}" *ngFor="let match of getMatches()" (click)="showChat(match.userId)">
+                                <div class="sk-match-avatar">
+                                    <user-avatar [url]="match.avatar" [isAvatarActive]="match.isAvatarActive"></user-avatar>
+                                </div>
+                                <span>{{match.displayName}}</span>
+                            </div>
+                        </div>
+                    </ion-scroll>
+                </div>
+
+                <!-- conversations list -->
+                <div class="sk-conversation-list" *ngIf="getConversations().length">
+                    <span>{{ 'new_messages' | translate }}</span>
+                    <div class="sk-conversations-wrap">
+                        <div (press)="showConversationActions(conversation)" class="sk-conversation-item {{!conversation.isRead ? 'sk-conversation-item-new' : ''}} {{conversation.opponentBlocked ? 'sk-conversation-item-blocked' : ''}}" *ngFor="let conversation of getConversations()" (click)="showChat(conversation.opponentId, conversation.id)">
+                            <div class="sk-conversation-item-avatar">
+                                <user-avatar [url]="conversation.opponentAvatar" [isAvatarActive]="conversation.isOpponentAvatarActive"></user-avatar>
+                            </div>
+                            <div class="sk-conversation-item-inner">
+                                <span>{{conversation.opponentDisplayName}}</span>
+                                <p>
+                                    <img *ngIf="conversation.isReply && !conversation.opponentIsRead" src="./assets/img/ic_sent.svg" alt="" />
+                                    <img *ngIf="conversation.isReply && conversation.opponentIsRead" src="./assets/img/ic_received.svg" alt="" />
+                                    {{conversation.previewText}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- no results found -->
+                <div class="sk-no-results" *ngIf="!getConversations().length && !getMatches().length">
+                    <img src="./assets/img/ic_no_matches.png" alt="">
+                    <span>{{ 'conversations_no_results' | translate }}</span>
+                </div>
+            </div>
+
+        </div>
+    </ion-scroll>
+</div>

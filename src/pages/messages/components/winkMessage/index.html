@@ -1,0 +1,7 @@
+<div class="sk-message-wrap sk-message-type-wink">
+    <span class="sk-message-date" *ngIf="!prevMessage || prevMessage && prevMessage.date != message.date">{{message.dateLabel}}</span>
+    <div class="sk-message {{message.isAuthor ? 'sk-message-sent' : 'sk-message-received'}}">
+        <span *ngIf="message.isAuthor">{{ 'mailbox_wink_sent_desc' | translate }}<img src="./assets/img/wink-sent.svg" alt="" /></span>
+        <span *ngIf="!message.isAuthor"><img src="./assets/img/wink-received.svg" alt="" />{{ 'mailbox_wink_received_desc' | translate }}</span>
+    </div>
+</div>

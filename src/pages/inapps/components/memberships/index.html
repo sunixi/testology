@@ -1,0 +1,16 @@
+<div class="sk-memberships-head">
+    <span>{{ 'your_membership' | translate }}:</span>
+    <button color="stable" class="sk-memberships-info">{{ currentMembership | translate }}<img src="assets/img/ic_info.svg" alt=""></button>
+</div>
+
+<div class="sk-membership-item-container" *ngFor="let membership of memberships">
+    <div class="sk-membership-item" *ngIf="membership?.plans?.length > 0" (click)="viewMembership(membership.id)">
+        <div class="wrap">
+            <span>{{ membership.title }}</span>
+            <p>
+                <span class="plan" *ngFor="let plan of membership.plans">{{plan.plan_format}}</span>
+            </p>
+        </div>
+        <ion-icon name="ios-arrow-forward"></ion-icon>
+    </div>
+</div>

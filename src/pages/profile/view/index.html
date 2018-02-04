@@ -1,0 +1,109 @@
+<ion-content class="sk-profile-view-page">
+
+    <!-- profile view is not allowed   -->
+    <div class="sk-permission-denied" *ngIf="!isViewAllowed">
+        <img src="./assets/img/no_permission.svg" alt="">
+        <h2>{{ 'permission_denied_header' | translate }}</h2>
+        <span>{{ 'permission_denied_alert_message' | translate }}</span>
+        <button ion-button outline round [navPush]="inappsPage">{{ 'upgrade' | translate }}</button>
+        <button ion-button outline round (click)="returnBack()">{{ 'back' | translate }}</button>
+    </div>
+
+    <div  class="{{ isProfileOwner ? '' : 'sk-not-profile-owner' }}" *ngIf="isViewAllowed && pageIsReady">
+
+        <!-- slider wrapper -->
+        <div class="sk-slider-wrap">
+            <!-- back -->
+            <div class="sk-slider-back" (tap)="returnBack()">
+                <ion-icon name="ios-arrow-up"></ion-icon>
+            </div>
+
+            <!-- edit profile -->
+            <button *ngIf="isProfileOwner" type="button" ion-button block round class="sk-edit-myprofile" [navPush]="editUserQuestionsPage">{{ 'edit_profile' | translate }}</button>
+
+            <!-- avatar and photos -->
+            <ion-slides #photosSlider [pager]="true" [paginationType]="bullets" class="profile-slider" (ionSlideDidChange)="photosSliderDidChange($event)">
+                <ion-slide>
+                    <user-avatar *ngIf="!isProfileOwner" [useBigAvatar]="true" [url]="user.avatar?.bigUrl" [isAvatarActive]="user.avatar?.active" (tap)="viewPhoto(user.avatar?.bigUrl)" (press)="showProfileActions()"></user-avatar>
+                    <user-avatar *ngIf="isProfileOwner"  [useBigAvatar]="true" [url]="user.avatar?.pendingBigUrl" (tap)="viewPhoto(user.avatar?.pendingBigUrl)" (press)="showProfileActions()"></user-avatar>
+                    <div *ngIf="isProfileOwner && user.avatar?.id && !user.avatar?.active" class="sk-photo-pending" (tap)="viewPhoto(user.avatar?.pendingBigUrl)" (press)="showProfileActions()">
+                        <img src="./assets/img/ic_pending.svg" alt="">
+                    </div>
+                </ion-slide>
+
+                <ng-container *ngIf="!isViewPhotoAllowed">
+                    <ion-slide>
+                        <div class="sk-permission-denied">
+                            <img src="./assets/img/no_permission.svg" alt="">
+                            <h2>{{ 'permission_denied_header' | translate }}</h2>
+                            <button ion-button outline round [navPush]="purchasesPage">{{ 'upgrade' | translate }}</button>
+                        </div>
+                    </ion-slide>
+                </ng-container>
+
+                <ng-container *ngIf="isViewPhotoAllowed">
+                    <ion-slide *ngFor="let photo of userPhotos">
+                        <img src="{{photo.bigUrl}}" alt="" (press)="showPhotoActions(photo.id)" (tap)="viewPhoto(photo.bigUrl)" />
+                        <div *ngIf="isProfileOwner && !photo.approved" class="sk-photo-pending" (press)="showPhotoActions(photo.id)" (tap)="viewPhoto(photo.bigUrl)">
+                            <img src="./assets/img/ic_pending.svg" alt="">
+                        </div>
+                    </ion-slide>
+                </ng-container>
+
+                <ion-slide *ngIf="isViewPhotoAllowed && userPhotosCount > photosLimit || isProfileOwner">
+                    <div class="sk-view-all-photos">
+                        <button *ngIf="!isProfileOwner" [navPush]="profilePhotosPage" [navParams]="profilePhotosPageNavParams" type="button" ion-button block round icon-right>{{ 'view_all_photos' | translate }}<ion-icon name="md-images"></ion-icon></button>
+                        <button *ngIf="isProfileOwner" [navPush]="editUserPhotosPage" type="button" ion-button block round icon-right>{{ 'manage_photos' | translate }}<ion-icon name="md-images"></ion-icon></button>
+                    </div>
+                </ion-slide>
+            </ion-slides>
+        </div>
+
+        <div class="{{user.isOnline && !isProfileOwner ? 'sk-profile-top sk-user-online' : 'sk-profile-top'}}">
+            <!-- base profile info -->
+            <div class="sk-user-info">
+                <span class="sk-name">{{user.realName}}<span *ngIf="user.age">, {{user.age}}</span></span>
+                <span class="sk-info" *ngIf="!isProfileOwner && user.distance.distance">
+                    <span *ngIf="user.distance.unit == 'km'">{{ 'km_away' | translate:{value: user.distance.distance} }}</span>
+                    <span *ngIf="user.distance.unit == 'miles'">{{ 'miles_away' | translate:{value: user.distance.distance} }}</span>
+                </span>
+            </div>
+            <div class="sk-user-cnx" *ngIf="!isProfileOwner" (click)="showProfileActions()">
+                <ion-icon name="md-more"></ion-icon>
+            </div>
+            <!-- compatibility -->
+        </div>
+        <div class="sk-profile-comp" *ngIf="!isProfileOwner">
+            <span>{{ 'compatibility' | translate }}</span>
+            <div class="sk-comp-bar">
+                <div class="sk-comp-bar-mask" [style.background]="getCompatibilityBackground(user.compatibility.match)">
+                    <span>{{user.compatibility.match ? user.compatibility.match : 0}}%</span>
+                </div>
+            </div>
+        </div>
+        <!-- questions -->
+        <div class="sk-profile-bottom">
+            <ng-container *ngFor="let sectionData of user.viewQuestions">
+                <div class="sk-profile-section" *ngFor="let question of sectionData.items">
+                    <div class="sk-section-head">
+                        {{question.label}}
+                    </div>
+                    <p class="sk-section-text">
+                        {{question.value}}
+                    </p>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</ion-content>
+
+<ion-footer no-border class="{{ !pageWillLeave ? 'sk-profile-footer' : 'sk-profile-footer-disabled' }}" *ngIf="isViewAllowed && pageIsReady && !isProfileOwner">
+    <ion-toolbar color="transparent">
+        <div class="sk-profile-actions">
+            <button class="sk-messages" (click)="showChat()"></button>
+            <button class="sk-dislike" (tap)="dislikeUser()" [@dislike]="userLikeStatus"></button>
+            <button class="sk-like" (tap)="likeUser()" [@like]="userLikeStatus"></button>
+            <button class="{{ isUserBookmarked ? 'sk-bookmarked' : 'sk-bookmark' }}" (tap)="bookmarkUser()"></button>
+        </div>
+    </ion-toolbar>
+</ion-footer>

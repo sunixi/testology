@@ -1,0 +1,15 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{ 'forgot_password_check_email_page_title' | translate }}</ion-title>
+        <ion-buttons end>
+            <button ion-button clear [disabled]="!form.valid" (click)="submit()">{{ 'next' | translate }}</button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="sk-forgot-pass-check-email-page sk-forgot-pass-page">
+  <ion-item text-wrap class="sk-description">
+    <p>{{ 'forgot_password_email_check_desc' | translate }}</p>
+  </ion-item>
+  <question *ngFor="let question of questions" [question]="question" [form]="form"></question>
+</ion-content>

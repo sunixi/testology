@@ -1,0 +1,56 @@
+.sk-regSuccess {
+  .wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .sk-success-icon {
+      width: 18vh;
+      margin: 3.5vh 0 3vh;
+    }
+    .sk-section {
+      letter-spacing: 0.5px;
+      text-align: center;
+      h2 {
+        font-size: 1.9rem;
+        color: #434649;
+      }
+      p {
+        margin-top: 0.5rem;
+        font-size: 1.7rem;
+        color: #AFB9C1;
+      }
+    }
+    .sk-inputs {
+      width: 55%;
+      margin: 6.5vh 0 2.5rem;
+      .input {
+        border-bottom: 0.55px solid #c8c7cc;
+      }
+      input {
+        font-size: 1.6rem;
+        &::-webkit-input-placeholder {color:#474747;}
+        &::-moz-placeholder          {color:#474747;}
+        &:-moz-placeholder           {color:#474747;}
+        &:-ms-input-placeholder      {color:#474747;}
+      }
+    }
+    .sk-buttons {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      button {
+        width: 55%;
+      }
+      h4 {
+        color: #2F84EB;
+        margin-top: 2rem;
+        text-decoration: none;
+        text-align: center;
+        font-size: 1.7rem;
+        letter-spacing: 0.5px;
+      }
+    }
+  }
+}

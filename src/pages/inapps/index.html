@@ -1,0 +1,28 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{ 'memberships_and_credits' | translate }}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="sk-memberships">
+
+    <ion-segment [(ngModel)]="targetPage">
+        <ion-segment-button value="Memberships">
+            {{ 'memberships' | translate }}
+        </ion-segment-button>
+        <ion-segment-button value="Credits">
+            {{ 'credits' | translate }}
+        </ion-segment-button>
+    </ion-segment>
+
+
+    <div class="sk-memberships-segment" [ngSwitch]="targetPage">
+        <div *ngSwitchCase="'Memberships'">
+            <memberships></memberships>
+        </div>
+
+        <div class="sk-credits-segment" *ngSwitchCase="'Credits'">
+            <credits></credits>
+        </div>
+    </div>
+</ion-content>

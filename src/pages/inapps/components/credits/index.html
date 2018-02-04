@@ -1,0 +1,11 @@
+<div class="sk-memberships-head">
+    <span>{{ 'your_credits' | translate }}:</span>
+    <button color="stable" class="sk-memberships-info">{{ creditBalance }}<img src="assets/img/ic_info.svg" alt=""></button>
+</div>
+
+<div class="sk-membership-item" *ngFor="let pack of creditPacks" (click)="buyPack(pack.productId)">
+    <div class="wrap">
+        <span>{{ pack.credits }}{{ 'credits' | translate }}</span>
+    </div>
+    <div class="sk-credits-price">{{ currency }}{{ pack.price }}</div>
+</div>

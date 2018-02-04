@@ -1,0 +1,21 @@
+@import "../index.scss";
+
+.sk-user-photos-edit-page {
+    ion-grid {
+         padding: 4px 10px 10px;
+    }
+
+    .sk-photos-approval {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 22px 12px 12px;
+        font-size: 1.5rem;
+        color: #BABABD;
+        img {
+            width: 6vw;
+            height: 6vw;
+            margin-right: 0.6rem
+        }
+    }
+}

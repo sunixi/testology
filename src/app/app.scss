@@ -1,0 +1,495 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+// Global font size
+
+html, html body {
+  font-size: 10px;
+}
+
+@media (max-width:320px) {
+  html, html body {
+    font-size: 9px;
+  }
+}
+
+// Global custom styles
+
+.header .toolbar .toolbar-background {
+  background-color: #fff;
+  border: 0;
+}
+
+.header-md::after {
+  display: none;
+}
+
+.action-sheet-sub-title {
+    display: inline-block;
+    padding: 20px 16px 12px;
+    color: #AFB9C1;
+    font-size: 1.5rem;
+    width: 100%;
+    border-bottom: 0.55px solid #d6d6da;
+}
+
+ion-content button.button-ios,
+ion-content button.button-md {
+    min-height: 42px;
+}
+
+// profile
+.sk-profile-top.sk-user-online {
+    .sk-user-info {
+        position: relative;
+        padding-right: 2.4rem;
+
+        .sk-name::after {
+            content: " ";
+            display: block;
+            width: 1.3rem;
+            height: 1.3rem;
+            background-color: #7ED321;
+            border-radius: 100%;
+            position: absolute;
+            right: 0;
+            top: 0.55rem;
+        }
+    }
+
+    .sk-card-info {
+        .sk-name b::after {
+            content: " ";
+            display: block;
+            width: 1.3rem;
+            height: 1.3rem;
+            background-color: #7ED321;
+            border-radius: 100%;
+            position: absolute;
+            right: 0;
+            top: 0.5rem;
+        }
+    }
+}
+.sk-card-bottom.sk-user-online {
+    .sk-card-info::after {
+            content: " ";
+            display: block;
+            width: 1.2rem;
+            height: 1.2rem;
+            background-color: #7ED321;
+            border-radius: 100%;
+            position: absolute;
+            right: 0;
+            top: 0.25rem;
+    }
+}
+
+.sk-photo-pending {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.7);
+
+}
+
+.sk-bookmarks-page, .sk-compatible-users-page,
+.sk-guests-page {
+    .item ion-avatar img {
+        object-fit: cover;
+    }
+}
+// -- gradient preloader animation -- //
+
+.sk-hot-list-tab, .sk-search-tab {
+    .sk-gradient-preloader {
+        height: 100vh;
+        background: linear-gradient(90deg, #FFF, #EAF0F4, #DFE5E9, #EAF0F4, #FFF);
+        background-size: 1800% 1800%;
+        -webkit-animation: dtc-gradimate 3s linear infinite;
+        -moz-animation: dtc-gradimate 3s linear infinite;
+        animation: dtc-gradimate 3s linear infinite;
+    }
+    @-webkit-keyframes dtc-gradimate {
+        0%{background-position:0% 50%}
+        5%{background-position:10% 50%}
+        10%{background-position:20% 50%}
+        15%{background-position:30% 50%}
+        20%{background-position:40% 50%}
+        25%{background-position:50% 50%}
+        30%{background-position:60% 50%}
+        35%{background-position:70% 50%}
+        40%{background-position:80% 50%}
+        45%{background-position:90% 50%}
+        50%{background-position:100% 50%}
+        55%{background-position:90% 50%}
+        60%{background-position:80% 50%}
+        65%{background-position:70% 50%}
+        70%{background-position:60% 50%}
+        75%{background-position:50% 50%}
+        80%{background-position:40% 50%}
+        85%{background-position:30% 50%}
+        90%{background-position:20% 50%}
+        95%{background-position:10% 50%}
+        100%{background-position:0% 50%}
+    }
+
+    @-moz-keyframes dtc-gradimate {
+        0%{background-position:0% 50%}
+        5%{background-position:10% 50%}
+        10%{background-position:20% 50%}
+        15%{background-position:30% 50%}
+        20%{background-position:40% 50%}
+        25%{background-position:50% 50%}
+        30%{background-position:60% 50%}
+        35%{background-position:70% 50%}
+        40%{background-position:80% 50%}
+        45%{background-position:90% 50%}
+        50%{background-position:100% 50%}
+        55%{background-position:90% 50%}
+        60%{background-position:80% 50%}
+        65%{background-position:70% 50%}
+        70%{background-position:60% 50%}
+        75%{background-position:50% 50%}
+        80%{background-position:40% 50%}
+        85%{background-position:30% 50%}
+        90%{background-position:20% 50%}
+        95%{background-position:10% 50%}
+        100%{background-position:0% 50%}
+    }
+
+    @keyframes dtc-gradimate {
+        0%{background-position:0% 50%}
+        5%{background-position:10% 50%}
+        10%{background-position:20% 50%}
+        15%{background-position:30% 50%}
+        20%{background-position:40% 50%}
+        25%{background-position:50% 50%}
+        30%{background-position:60% 50%}
+        35%{background-position:70% 50%}
+        40%{background-position:80% 50%}
+        45%{background-position:90% 50%}
+        50%{background-position:100% 50%}
+        55%{background-position:90% 50%}
+        60%{background-position:80% 50%}
+        65%{background-position:70% 50%}
+        70%{background-position:60% 50%}
+        75%{background-position:50% 50%}
+        80%{background-position:40% 50%}
+        85%{background-position:30% 50%}
+        90%{background-position:20% 50%}
+        95%{background-position:10% 50%}
+        100%{background-position:0% 50%}
+    }
+}
+
+//-- questions --//
+
+// section
+.sk-questions-section {
+    background-color: transparent;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #6D6D72;
+    text-transform: uppercase;
+
+    .item-inner {
+        border: 0;
+
+        .label {
+            margin: 1rem 0.8rem 0.3rem 0;
+        }
+    }
+}
+
+// base questions
+
+question:last-child .item-block .item-inner {
+   border: none;
+}
+
+.sk-base-question-presentation.sk-question-warning {
+    ion-item {
+        background-color: #FFFCE4;
+    }
+}
+
+.sk-base-question-presentation {
+    position:relative;
+
+    // stacked text question, google location question
+    .sk-stacked-text-question-presentation,
+    .sk-googlemap-location-question-presentation {
+        .label {
+            margin-bottom: 0;
+            font-size: 1.7rem;
+        }
+
+        input {
+            font-size: 1.4rem;
+        }
+    }
+
+    // select question
+    .sk-select-question-presentation {
+        .item-inner {
+            padding-right: 16px;
+        }
+
+        .input-wrapper {
+            flex-direction: column;
+            align-items: flex-start;
+            background-image: url("../assets/img/ic_select.svg");
+            background-repeat: no-repeat;
+            background-position: center right;
+        }
+
+        .label {
+            font-size: 1.7rem;
+            margin: 1rem 0.8rem 0.9rem 0;
+        }
+
+        .select {
+            max-width: 70%;
+            padding: 0 1rem 1rem 1px;
+            font-size: 1.4rem;
+            color: #9f9f9f;
+
+            .select-icon {
+                display: none;
+            }
+        }
+    }
+
+    // date question
+    .sk-date-question-presentation {
+        .item-inner {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .label {
+            font-size: 1.7rem;
+            margin: 1rem 0.8rem 0.9rem 0;
+        }
+
+        .datetime {
+            padding: 0 1rem 1rem 1px;
+            font-size: 1.4rem;
+            color: #9f9f9f;
+        }
+    }
+
+    // range questions
+    .sk-range-question-presentation {
+        .label {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding-right: 8px;
+            font-size: 1.7rem;
+        }
+
+        .range {
+            padding: 0 8px 8px 0;
+
+            .range-bar {
+                background-color: #D2D2D2;
+            }
+
+            .range-bar-active {
+                background-color: #387ef5;
+            }
+            .range-knob {
+                box-shadow: none;
+                background-color: #387ef5;
+                height: 16px;
+                width: 16px;
+                top: 14px;
+                left: 14px;
+            }
+        }
+    }
+
+    // date range question
+    .sk-date-range-question-presentation {
+        padding: 11px 0 0;
+        background-color: #fff;
+        ion-label {
+          margin: 0;
+          padding-left: 16px;
+          font-size: 1.7rem;
+        }
+        ion-datetime.datetime {
+          padding: 0;
+        }
+        .sk-date-range-question-wrap {
+          padding-left: 16px;
+          .wrap {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding-right: 16px;
+            border-bottom: 0.55px solid #c8c7cc;
+            span {
+              display: inline-block;
+              padding: 0 12px;
+              font-size: 1.7rem;
+            }
+          }
+          .item-datetime {
+            width: auto;
+            padding-left: 0;
+            color: #9f9f9f;
+            .item-inner {
+              border: 0;
+            }
+          }
+        }
+    }
+    &.sk-question-warning .sk-date-range-question-presentation {
+      background: #FFFCE4;
+    }
+
+    // extended googlemap question
+    .sk-extended-googlemap-location-question-presentation {
+      .item-range {
+        .range {
+          padding: 0 8px 8px 0;
+        }
+        .label {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          font-size: 1.7rem;
+        }
+        .range-knob-handle .range-knob {
+          box-shadow: none;
+          background-color: #387ef5;
+          height: 16px;
+          width: 16px;
+          top: 14px;
+          left: 14px;
+        }
+      }
+      .text-input {
+        margin-top: 0;
+        margin-bottom: 24px;
+      }
+    }
+
+
+    // textarea question
+    .sk-textarea-question-presentation {
+        .label {
+            margin-bottom: 0;
+            font-size: 1.7rem;
+        }
+    }
+
+    // question error
+    .sk-extended-googlemap-location-question-presentation .sk-question-error,
+    .sk-stacked-text-question-presentation .sk-question-error,
+    .sk-text-question-presentation .sk-question-error,
+    .sk-select-question-presentation .sk-question-error,
+    .sk-date-question-presentation .sk-question-error,
+    .sk-googlemap-location-question-presentation .sk-question-error,
+    .sk-range-question-presentation .sk-question-error,
+    .sk-textarea-question-presentation .sk-question-error,
+    .sk-date-range-question-presentation .sk-question-error,
+    .sk-checkbox-question-presentation .sk-question-error {
+        position: absolute;
+        z-index: 999;
+        height: 28px;
+        width: 28px;
+        top: calc(50% - 14px);
+        right: 8px;
+        background-image: url("../assets/img/ic_error.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
+}
+
+//-- questions --//
+
+
+//-- Android normalize --//
+.list-md .item-input.input-has-focus {
+    border: 0!important;
+    border-color: transparent;
+    box-shadow: none!important;
+}
+
+.content .item-md.item-input.input-has-focus .item-inner {
+    border-color: #dedede;
+}
+
+.content .list-md .item-input:last-child {
+    border: 0;
+}
+
+.content .input-has-focus .label-md[stacked],
+.content .input-has-focus .label-md[floating],
+.content .item-input .label-md, .content .item-select .label-md,
+.content .item-datetime .label-md {
+    color: #000;
+}
+
+//-- Searchbar button normalize --//
+
+.searchbar-ios .searchbar-clear-icon,
+.searchbar-md .searchbar-clear-icon {
+  min-height: 0;
+}
+
+// permissions denied and nothing found
+.sk-permission-denied,
+.sk-nothing-found {
+    height: calc( 100vh - 120px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5%;
+
+    img {
+        width: 32vh;
+        margin-bottom: 2vh;
+    }
+
+    h2 {
+        margin-bottom: 3.5vh;
+        margin-top: 3vh;
+        font-size: 2rem;
+    }
+
+    span {
+        font-size: 1.8rem;
+        color: #AFB9C1;
+    }
+
+    button {
+        margin-top: 3rem;
+        width: 65%;
+
+        span {
+          color: #2F84EB;
+        }
+    }
+}

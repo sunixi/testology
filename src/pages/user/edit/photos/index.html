@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{ 'edit_user_photos_page_header' | translate }}</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="showAllActions()" *ngIf="pageReady">
+                <ion-icon name="md-more"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="sk-user-edit-base sk-user-photos-edit-page">
+
+    <div *ngIf="pageReady">
+        <div class="sk-photos-approval" *ngIf="approvalText"><img src="./assets/img/ic_pending_grey.svg" alt="">{{approvalText}}</div>
+        <ion-grid>
+            <ion-row *ngFor="let photoSections of photos; let row = index">
+                <ion-col *ngFor="let photoData of photoSections; let col = index" class="sk-photo-grid-item" (tap)="tapPhoto(row, col)" (press)="pressPhoto(row, col)" [style.background-image]="photoData.url ? 'url(' + photoData.url + ')' : 'none'">
+                    <div *ngIf="!photoData.active" class="sk-photo-pending"><img src="./assets/img/ic_pending.svg" alt=""></div>
+                    <div *ngIf="photoData.type == 'avatar'" class="sk-avatar-mask"></div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+        <ion-infinite-scroll (ionInfinite)="loadMorePhotos()">
+            <ion-infinite-scroll-content></ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+    </div>
+
+</ion-content>
