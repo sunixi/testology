@@ -1,0 +1,14 @@
+{
+  "id": "com.atthe.clubb",
+  "version": "0.0.1",
+  "name": "Skmobile APP",
+  "description": "skadate mobile app",
+  "authorEmail": "info@skadate.com",
+  "authorName": "attheclubb",
+  "authorUrl": "http://attheclubb.com",
+  "serverUrl": "https://attheclubb.com",
+  "facebookAppId": "156591851548438",
+  "googleProjectNumber": "",
+  "play_store_key": "",
+  "connectionTimeout": "1068606795665"
+}
