@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="52px" height="52px" viewBox="0 0 52 52" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>Ic_Bookmark</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="MyProfile-Copy" transform="translate(-290.000000, -588.000000)">
+            <g id="Ic_Bookmark" transform="translate(291.000000, 589.000000)">
+                <g id="Page-1" stroke-width="1" fill-rule="evenodd" transform="translate(16.000000, 13.000000)" fill="#2F84EB">
+                    <path d="M18.211556,23.9999375 C18.0424434,23.9999375 17.873458,23.9558125 17.7230368,23.8675625 L9.58261828,19.0940625 L1.44219974,23.8675625 C1.14758781,24.0405625 0.781261987,24.0441875 0.482708344,23.8776875 C0.184281854,23.7110625 3.81456957e-05,23.3998125 3.81456957e-05,23.0624375 L3.81456957e-05,0.9374375 C3.81456957e-05,0.4196875 0.427015629,-6.25e-05 0.95368053,-6.25e-05 L18.211556,-6.25e-05 C18.7383481,-6.25e-05 19.1651984,0.4196875 19.1651984,0.9374375 L19.1651984,23.0624375 C19.1651984,23.3998125 18.9808275,23.7110625 18.6825282,23.8776875 C18.5364302,23.9593125 18.3739295,23.9999375 18.211556,23.9999375" id="Fill-1"></path>
+                </g>
+                <circle id="Oval-4-Copy" stroke="#2F84EB" stroke-width="2" cx="25" cy="25" r="25"></circle>
+            </g>
+        </g>
+    </g>
+</svg>

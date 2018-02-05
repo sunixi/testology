@@ -1,0 +1,18 @@
+<svg width="102px" height="89px" viewBox="137 91 102 89" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="0%" y1="-9.29130979%" x2="84.899353%" y2="88.1787478%" id="linearGradient-1">
+            <stop stop-color="#F08D31" offset="0%"></stop>
+            <stop stop-color="#EE0E5C" offset="100%"></stop>
+        </linearGradient>
+        <polygon id="path-2" points="102 44.4826045 102 88.9651254 0 88.9651254 0 44.4826045 0 8.36990596e-05 102 8.36990596e-05 102 44.4826045"></polygon>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(137.000000, 91.000000)">
+        <mask id="mask-3" fill="white">
+            <use xlink:href="#path-2"></use>
+        </mask>
+        <g id="Clip-2"></g>
+        <path d="M65.5322581,45.182231 L40.0322581,68.3389708 L50.3775806,46.8562122 L43.0483871,38.4863063 L68.5483871,17.5615414 L57.5806452,38.4863063 L65.5322581,45.182231 Z M74.9919355,8.36990596e-05 C64.5509194,8.36990596e-05 55.4948548,6.02892696 51,14.8516448 L51,14.8519238 C46.5051452,6.02920596 37.4490806,8.36990596e-05 27.0080645,8.36990596e-05 C12.0919355,8.36990596e-05 0,12.3038455 0,27.4812749 C0,66.1223408 51,88.9652091 51,88.9652091 C51,88.9652091 102,66.1223408 102,27.4812749 C102,12.3035665 89.9080645,8.36990596e-05 74.9919355,8.36990596e-05 L74.9919355,8.36990596e-05 Z" id="Fill-1" fill="url(#linearGradient-1)" mask="url(#mask-3)"></path>
+    </g>
+</svg>
